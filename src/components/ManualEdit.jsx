@@ -5,7 +5,7 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
-import { size } from "../Constants";
+import { size, type } from "../Constants";
 import BottomTabs from "./BottomTabs";
 import States from "./States";
 
@@ -32,11 +32,13 @@ const ManualEdit = () => {
               Challenge rating
             </InputLabel>
             <Select defaultValue="" label="challenge-rating-label">
-              {[1/8, 1/4, 1/2, ...new Array(31).keys()].sort().map((item) => (
-                <MenuItem key={item} value={item}>
-                  {item}
-                </MenuItem>
-              ))}
+              {[1 / 8, 1 / 4, 1 / 2, ...new Array(31).keys()]
+                .sort()
+                .map((item) => (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                ))}
             </Select>
           </FormControl>
         </Grid>
@@ -63,12 +65,11 @@ const ManualEdit = () => {
           <FormControl item sx={{ minWidth: 180 }} size="small">
             <InputLabel id="Type-label">Type</InputLabel>
             <Select defaultValue="" label="Type-label">
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              {type.map((item) => (
+                <MenuItem key={item} value={item}>
+                  {item}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Grid>

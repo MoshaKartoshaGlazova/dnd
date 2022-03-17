@@ -69,3 +69,20 @@ export const damageType = [
 ];
 
 export const size = ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"];
+
+export const type = [
+  "Aberration",
+  "Beast",
+  "Celestial",
+  "Construct",
+  "Dragon",
+  "Elemental",
+  "Fey",
+  "Fiend",
+  "Giant",
+  "Humanoid",
+  "Monstrosity",
+  "Ooze",
+  "Plant",
+  "Undead",
+];
