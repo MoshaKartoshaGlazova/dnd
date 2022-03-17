@@ -1,31 +1,12 @@
 import React from "react";
-import { Box, Grid, InputAdornment, Tab, Tabs, TextField } from "@mui/material";
+import { Box, Grid, Tab, Tabs } from "@mui/material";
 import CheckboxList from "../components/CheckboxList";
 import { conditions, damageType, languages, skills } from "../Constants";
 import Skill from "./Skill";
+import Sense from "./Sense";
+import TabPanel, { a11yProps } from "./TabPanel";
 
-const TabPanel = (props) => {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  );
-};
-
-const a11yProps = (index) => ({
-  id: `simple-tab-${index}`,
-  "aria-controls": `simple-tabpanel-${index}`,
-});
-
-const BottomTabs = () => {
+const BottomTabs = ({ onChange, currentState }) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -55,68 +36,87 @@ const BottomTabs = () => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <CheckboxList array={skills} BaseComponent={Skill} />
+        <CheckboxList
+          array={skills}
+          listName="skills"
+          BaseComponent={Skill}
+          onChange={onChange}
+          state={currentState}
+        />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <CheckboxList array={damageType} />
+        <CheckboxList
+          array={damageType}
+          listName="dmgVULUNERABILITY"
+          onChange={onChange}
+          elementDisabled={disableElement([
+            currentState.dmgIMMUNITIES,
+            currentState.dmgResistance,
+          ])}
+          state={currentState}
+        />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <CheckboxList array={damageType} />
+        <CheckboxList
+          array={damageType}
+          listName="dmgIMMUNITIES"
+          onChange={onChange}
+          elementDisabled={disableElement([
+            currentState.dmgVULUNERABILITY,
+            currentState.dmgResistance,
+          ])}
+          state={currentState}
+        />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <CheckboxList array={damageType} />
+        <CheckboxList
+          array={damageType}
+          listName="dmgResistance"
+          onChange={onChange}
+          elementDisabled={disableElement([
+            currentState.dmgVULUNERABILITY,
+            currentState.dmgIMMUNITIES,
+          ])}
+          state={currentState}
+        />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <CheckboxList array={conditions} />
+        <CheckboxList
+          array={conditions}
+          listName="conditions"
+          onChange={onChange}
+          state={currentState}
+        />
       </TabPanel>
-      <TabPanel
-        value={value}
-        index={5}
-      >
-        <Grid
-          container
-          justifyContent="center"
-          spacing={2}
-        >
-          <Grid item >
-            <TextField
-              sx={{ width: 150 }}
-              label="Darkvision"
-              variant="outlined"
-              InputProps={{
-                inputMode: 'numeric', pattern: '[0-9]*',
-                endAdornment: <InputAdornment position="end">feet</InputAdornment>,
-              }}
-            />
+      <TabPanel value={value} index={5}>
+        <Grid container justifyContent="center" spacing={2}>
+          <Grid item>
+            <Sense onChange={onChange} label="Darkvision" />
           </Grid>
           <Grid item>
-            <TextField
-              sx={{ width: 150 }}
-              label="Tremorsense"
-              variant="outlined"
-            />
+            <Sense onChange={onChange} label="Tremorsense" />
           </Grid>
           <Grid item>
-            <TextField
-              sx={{ width: 150 }}
-              label="Truesight"
-              variant="outlined"
-            />
+            <Sense onChange={onChange} label="Truesight" />
           </Grid>
           <Grid item>
-            <TextField
-              sx={{ width: 150 }}
-              label="Blindsight"
-              variant="outlined"
-            />
+            <Sense onChange={onChange} label="Blindsight" />
           </Grid>
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={6}>
-        <CheckboxList array={languages} />
+        <CheckboxList
+          array={languages}
+          listName="languages"
+          onChange={onChange}
+          state={currentState}
+        />
       </TabPanel>
     </>
   );
 };
 
 export default BottomTabs;
+
+const disableElement = (arrays) => (element) =>
+  arrays.some((item) => item?.includes(element));

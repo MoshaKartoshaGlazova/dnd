@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
@@ -10,6 +10,11 @@ import BottomTabs from "./BottomTabs";
 import States from "./States";
 
 const ManualEdit = () => {
+  const [state, setState] = useState({});
+  const onChange = ({ name, value }) => {
+    console.log(state, name, value)
+    setState({ ...state, [name]: value });
+  };
   return (
     <>
       <Grid
@@ -24,6 +29,9 @@ const ManualEdit = () => {
             label="Name"
             variant="outlined"
             size="small"
+            value={state.name}
+            name="Name"
+            onChange={(event) => onChange(event.target)}
           />
         </Grid>
         <Grid item xs={3}>
@@ -31,7 +39,12 @@ const ManualEdit = () => {
             <InputLabel id="challenge-rating-label">
               Challenge rating
             </InputLabel>
-            <Select defaultValue="" label="challenge-rating-label">
+            <Select
+              defaultValue=""
+              name="challengeRating"
+              label="challenge-rating-label"
+              onChange={(event) => onChange(event.target)}
+            >
               {[1 / 8, 1 / 4, 1 / 2, ...new Array(31).keys()]
                 .sort()
                 .map((item) => (
@@ -52,7 +65,13 @@ const ManualEdit = () => {
         <Grid item>
           <FormControl item sx={{ minWidth: 180 }} size="small">
             <InputLabel id="size-label">Size</InputLabel>
-            <Select defaultValue="" label="size-label" size="small">
+            <Select
+              defaultValue=""
+              name="size"
+              label="size-label"
+              size="small"
+              onChange={(event) => onChange(event.target)}
+            >
               {size.map((item) => (
                 <MenuItem key={item} value={item}>
                   {item}
@@ -64,7 +83,8 @@ const ManualEdit = () => {
         <Grid item>
           <FormControl item sx={{ minWidth: 180 }} size="small">
             <InputLabel id="Type-label">Type</InputLabel>
-            <Select defaultValue="" label="Type-label">
+            <Select defaultValue="" name="type" label="Type-label"
+              onChange={(event) => onChange(event.target)}>
               {type.map((item) => (
                 <MenuItem key={item} value={item}>
                   {item}
@@ -79,6 +99,8 @@ const ManualEdit = () => {
             label="Subtype"
             variant="outlined"
             size="small"
+            name="subType"
+            onChange={(event) => onChange(event.target)}
           />
         </Grid>
       </Grid>
@@ -94,12 +116,15 @@ const ManualEdit = () => {
             label="Armor"
             variant="outlined"
             size="small"
+            name="armor"
+            onChange={(event) => onChange(event.target)}
           />
         </Grid>
         <Grid item>
           <FormControl item sx={{ minWidth: 180 }} size="small">
             <InputLabel id="Armor-Type-label">Armor Type</InputLabel>
-            <Select defaultValue="" label="Armo-Type-label">
+            <Select defaultValue="" label="Armo-Type-label" name="armorType"
+              onChange={(event) => onChange(event.target)}>
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
@@ -115,13 +140,15 @@ const ManualEdit = () => {
             label="Hit Dice Number"
             variant="outlined"
             size="small"
+            name="hitDiceNumber"
+            onChange={(event) => onChange(event.target)}
           />
         </Grid>
       </Grid>
-      <States />
+      <States state={state} onChange={onChange} />
 
       <Grid sx={{ marginTop: 1 }}>
-        <BottomTabs />
+        <BottomTabs onChange={onChange} currentState={state} />
       </Grid>
     </>
   );
