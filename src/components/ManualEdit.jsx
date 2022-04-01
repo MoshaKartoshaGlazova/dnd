@@ -8,6 +8,7 @@ import Grid from "@mui/material/Grid";
 import { size, type } from "../Constants";
 import BottomTabs from "./BottomTabs";
 import States from "./States";
+import Actions from "./actions";
 
 const ManualEdit = () => {
   const [state, setState] = useState({});
@@ -149,6 +150,10 @@ const ManualEdit = () => {
 
       <Grid sx={{ marginTop: 1 }}>
         <BottomTabs onChange={onChange} currentState={state} />
+      </Grid>
+      
+      <Grid sx={{ margin: 1 }}>
+        <Actions onChange={onChange} state={state} />
       </Grid>
     </>
   );
