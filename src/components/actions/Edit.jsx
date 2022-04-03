@@ -1,4 +1,12 @@
-import { Button, Grid, TextField } from "@mui/material";
+import {
+  Button,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 import React from "react";
 
 const Edit = ({ action, onEdit, switchView }) => {
@@ -20,20 +28,24 @@ const Edit = ({ action, onEdit, switchView }) => {
         />
       </Grid>
       <Grid item xs={6}>
-        <TextField
-          label="Type"
-          value={type}
-          name="type"
-          placeholder="Mele"
-          {...sharedInputProps}
-        />
+        <FormControl item size="small">
+          <InputLabel id="type-label">Armor Type</InputLabel>
+          <Select
+            label="type-label"
+            name="type"
+            onChange={(event) => onChange(event.target)}
+          >
+            <MenuItem value="melee">Melee</MenuItem>
+            <MenuItem value="range">Range</MenuItem>
+          </Select>
+        </FormControl>
       </Grid>
       <Grid item xs={6}>
         <TextField
           label="Reach"
           name="reach"
           value={reach}
-          placeholder ="15 ft."
+          placeholder="15 ft."
           {...sharedInputProps}
         />
       </Grid>
@@ -42,7 +54,7 @@ const Edit = ({ action, onEdit, switchView }) => {
           label="On heat"
           name="onHit"
           value={onHit}
-          placeholder = "10"
+          placeholder="10"
           {...sharedInputProps}
         />
       </Grid>
@@ -51,7 +63,7 @@ const Edit = ({ action, onEdit, switchView }) => {
           label="Target"
           name="target"
           value={target}
-          placeholder = "one creature"
+          placeholder="one creature"
           {...sharedInputProps}
         />
       </Grid>
