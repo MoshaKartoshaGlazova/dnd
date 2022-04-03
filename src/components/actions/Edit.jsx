@@ -28,8 +28,8 @@ const Edit = ({ action, onEdit, switchView }) => {
         />
       </Grid>
       <Grid item xs={6}>
-        <FormControl item size="small">
-          <InputLabel id="type-label">Armor Type</InputLabel>
+        <FormControl sx={{ minWidth: 180 }} size="small">
+          <InputLabel id="type-label">Type</InputLabel>
           <Select
             label="type-label"
             name="type"
