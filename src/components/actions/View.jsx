@@ -1,29 +1,109 @@
 import { Grid, IconButton, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import React from "react";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import React, { useState } from "react";
 
 const View = ({ action, switchView, onDelete }) => {
-  const { name, onHit, type, reach, target, description } = action;
+  const {
+    name,
+    characteristic,
+    type,
+    range,
+    magicBonus,
+    proficiency,
+    criticalRange,
+    //target,
+    damages,
+    description,
+    attack,
+    cost,
+  } = action;
+  const [showActionButtons, setShowActionButtons] = useState(false);
   return (
-    <Grid item container direction="column" justifyContent="flex-start" marginTop={2}>
-      <Grid item container direction="row" justifyContent="space-between" >
-          <Grid margin="auto 0" item><Typography fontWeight="bold">{name}</Typography></Grid>
-        <Grid item>
-        <IconButton size="small"  onClick={switchView}>
-          <EditIcon />
-        </IconButton>
-        <IconButton size="small"  onClick={onDelete}>
-          <DeleteOutlineIcon />
-        </IconButton>
+    <Grid
+      item
+      container
+      direction="column"
+      justifyContent="flex-start"
+      marginTop={2}
+      onMouseEnter={() => setShowActionButtons(true)}
+      onMouseLeave={() => setShowActionButtons(false)}
+    >
+      <Grid item container direction="row" justifyContent="space-between">
+        <Grid margin="auto 0" item>
+          <Typography fontWeight="bold">
+            {name}
+            {cost && ` ${cost} Action(s)`}
+          </Typography>
         </Grid>
+        {showActionButtons && (
+          <Grid item>
+            <IconButton size="small" onClick={switchView}>
+              <EditIcon />
+            </IconButton>
+            <IconButton size="small" onClick={onDelete}>
+              <DeleteOutlineIcon />
+            </IconButton>
+          </Grid>
+        )}
       </Grid>
       <Grid item>
         <Typography>
-          {onHit ? <><Typography component="span" fontStyle="oblique">On hit:</Typography> {onHit} </> : ""}
-          {type ? <><Typography component="span" fontStyle="oblique">Type:</Typography> {type} </> : ""}
-          {reach ? <><Typography component="span" fontStyle="oblique">Reach:</Typography> {reach} </> : ""}
-          {target ? <><Typography component="span" fontStyle="oblique">Target:</Typography> {target}</> : ""}
+          {type ? (
+            <>
+              <Typography component="span" fontStyle="oblique">
+                Type:
+              </Typography>{" "}
+              {type}{" "}
+            </>
+          ) : (
+            ""
+          )}
+          {range ? (
+            <>
+              <Typography component="span" fontStyle="oblique">
+                Range:
+              </Typography>{" "}
+              {range}{" "}
+            </>
+          ) : (
+            ""
+          )}
+          {criticalRange ? (
+            <>
+              <Typography component="span" fontStyle="oblique">
+                Critical Range:
+              </Typography>{" "}
+              {criticalRange}{" "}
+            </>
+          ) : (
+            ""
+          )}
+          {magicBonus ? (
+            <>
+              <Typography component="span" fontStyle="oblique">
+                Magic Bonus:
+              </Typography>{" "}
+              {magicBonus}{" "}
+            </>
+          ) : (
+            ""
+          )}
+          {damages?.length > 0 ? (
+            <>
+              <Typography component="span" fontStyle="oblique">
+                Damages:
+              </Typography>
+              {damages.map(
+                (item) =>
+                  ` ${item.damage ?? 0} + ${item.additional ?? 0} + ${
+                    item.characteristic
+                  } ${item.type}`
+              )}
+            </>
+          ) : (
+            ""
+          )}
         </Typography>
       </Grid>
       <Grid item>

@@ -86,3 +86,5 @@ export const type = [
   "Plant",
   "Undead",
 ];
+
+export const states = ["STR", "DEX", "CON", "INT", "WIS", "CHA"];
