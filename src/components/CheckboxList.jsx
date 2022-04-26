@@ -1,4 +1,4 @@
-import { Checkbox, FormControlLabel } from "@mui/material";
+import { Checkbox, FormControlLabel, Typography } from "@mui/material";
 import React from "react";
 
 const CheckboxList = ({
@@ -33,9 +33,9 @@ const CheckboxList = ({
       onChange={onChange}
       state={state}  />
     ) : (
-      <FormControlLabel
+      <FormControlLabel 
+      sx={{ minWidth: 165,marginTop: -1}}
         key={item}
-        sx={{ minWidth: 165 }}
         control={
           <Checkbox
             checked={state[listName]?.includes(item)??false}
@@ -44,7 +44,9 @@ const CheckboxList = ({
             }}
           />
         }
-        label={item}
+        label={<Typography sx={
+          {fontSize: 13}
+        }> {item} </Typography>}
         disabled={elementDisabled && elementDisabled(item)}
       />
     )

@@ -8,6 +8,7 @@ import {
   MenuItem,
   Select,
   TextField,
+  Card,
 } from "@mui/material";
 import React from "react";
 import { damageType, states } from "../../Constants";
@@ -44,190 +45,193 @@ const Edit = ({ action, state, onEdit, switchView, title }) => {
       });
 
   return (
-    <Grid item container justifyContent="center" spacing={2} marginTop={2}>
-      <Grid item xs={title === "legendaryactions" ? 6 : 12}>
-        <TextField
-          label="Name"
-          name="name"
-          value={name}
-          {...sharedInputProps}
-        />
-      </Grid>
-      {title === "legendaryactions" && (
-        <Grid item xs={6}>
+    <Card sx={{ padding: 1 }}>
+      <Grid item container justifyContent="center" spacing={2} marginTop={2}>
+        <Grid item xs={title === "legendaryactions" ? 10 : 12}>
           <TextField
-            label="Cost"
-            name="cost"
-            value={cost}
+            label="Name"
+            name="name"
+            value={name}
             {...sharedInputProps}
           />
         </Grid>
-      )}
-      <Grid item xs={12}>
-        <FormControlLabel
-          sx={{ minWidth: 165 }}
-          control={
-            <Checkbox
-              name="atack"
-              checked={attack}
-              onChange={() => onChange({ name: "attack", value: !attack })}
-            />
-          }
-          label="Atack"
-        />
-      </Grid>
-      {attack && (
-        <>
-          <Grid item xs={6}>
-            <FormControl sx={{ minWidth: 180 }} size="small">
-              <InputLabel id="type-label">Type</InputLabel>
-              <Select
-                label="type-label"
-                name="type"
-                value={type}
-                onChange={(event) => onChange(event.target)}
-              >
-                <MenuItem value="melee">Melee</MenuItem>
-                <MenuItem value="range">Range</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
+        {title === "legendaryactions" && (
           <Grid item xs={6}>
             <TextField
-              label="Range"
-              name="range"
-              value={range}
-              placeholder="15 ft."
+              label="Cost"
+              name="cost"
+              value={cost}
               {...sharedInputProps}
             />
           </Grid>
-          <Grid item xs={6}>
-            <TextField
-              label="Magic Bonus"
-              name="magicBonus"
-              value={magicBonus}
-              placeholder="+1"
-              {...sharedInputProps}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <TextField
-              label="Critical range"
-              name="criticalRange"
-              value={criticalRange}
-              placeholder="15 ft."
-              {...sharedInputProps}
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <FormControlLabel
-              sx={{ minWidth: 165 }}
-              control={
-                <Checkbox
-                  name="proficiency"
-                  checked={proficiency}
-                  onChange={() =>
-                    onChange({ name: "proficiency", value: !attack })
-                  }
-                />
-              }
-              label="Proficiency"
-            />
-          </Grid>
-          <Grid item xs={6}>
-            <FormControl sx={{ minWidth: 180 }} size="small">
-              <InputLabel id="characteristic-label">Characteristic</InputLabel>
-              <Select
-                label="characteristic-label"
-                name="characteristic"
-                value={characteristic}
-                onChange={(event) => onChange(event.target)}
-              >
-                <MenuItem value={undefined}>None</MenuItem>
-                {states.map((item) => (
-                  <MenuItem key={item} value={item}>
-                    {item}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          {damages &&
-            damages.map((item, index) => (
-              <>
-                <Grid item xs={6}>
-                  <TextField
-                    label="Damage"
-                    name="damage"
-                    value={item.damage}
-                    placeholder="2d6"
-                    {...sharedInputProps}
-                    onChange={onDamage(index)}
+        )}
+        <Grid item xs={12}>
+          <FormControlLabel
+            sx={{ minWidth: 165 }}
+            control={
+              <Checkbox
+                name="atack"
+                checked={attack}
+                onChange={() => onChange({ name: "attack", value: !attack })}
+              />
+            }
+            label="Atack"
+          />
+        </Grid>
+        {attack && (
+          <>
+            <Grid item xs={6}>
+              <FormControl fullWidth size="small">
+                <InputLabel id="type-label">Type</InputLabel>
+                <Select
+                  label="type-label"
+                  name="type"
+                  value={type}
+                  onChange={(event) => onChange(event.target)}
+                >
+                  <MenuItem value="melee">Melee</MenuItem>
+                  <MenuItem value="range">Range</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label="Range"
+                name="range"
+                value={range}
+                placeholder="15 ft."
+                {...sharedInputProps}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label="Magic Bonus"
+                name="magicBonus"
+                value={magicBonus}
+                placeholder="+1"
+                {...sharedInputProps}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label="Critical range"
+                name="criticalRange"
+                value={criticalRange}
+                placeholder="15 ft."
+                {...sharedInputProps}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <FormControlLabel
+                sx={{ minWidth: 165 }}
+                control={
+                  <Checkbox
+                    name="proficiency"
+                    checked={proficiency}
+                    onChange={() =>
+                      onChange({ name: "proficiency", value: !attack })
+                    }
                   />
-                </Grid>
-                <Grid item xs={6}>
-                  <FormControl sx={{ minWidth: 180 }} size="small">
-                    <InputLabel id="characteristic-label">
-                      + Characteristic
-                    </InputLabel>
-                    <Select
-                      label="characteristic-label"
-                      name="characteristic"
-                      value={item.characteristic}
+                }
+                label="Proficiency"
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <FormControl fullWidth size="small">
+                <InputLabel id="characteristic-label">
+                  Characteristic
+                </InputLabel>
+                <Select
+                  label="characteristic-label"
+                  name="characteristic"
+                  value={characteristic}
+                  onChange={(event) => onChange(event.target)}
+                >
+                  <MenuItem value={undefined}>None</MenuItem>
+                  {states.map((item) => (
+                    <MenuItem key={item} value={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+            {damages &&
+              damages.map((item, index) => (
+                <>
+                  <Grid item xs={6}>
+                    <TextField
+                      label="Damage"
+                      name="damage"
+                      value={item.damage}
+                      placeholder="2d6"
+                      {...sharedInputProps}
                       onChange={onDamage(index)}
-                    >
-                      <MenuItem value={undefined}>None</MenuItem>
-                      {states.map((item) => (
-                        <MenuItem key={item} value={item}>
-                          {item}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={6}>
-                  <TextField
-                    label="Additional (+)"
-                    name="additional"
-                    value={item.additional}
-                    placeholder="0"
-                    {...sharedInputProps}
-                    onChange={onDamage(index)}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <FormControl sx={{ minWidth: 180 }} size="small">
-                    <InputLabel id="type-label">Type</InputLabel>
-                    <Select
-                      label="type-label"
-                      name="type"
-                      value={item.type}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <FormControl size="small">
+                      <InputLabel id="characteristic-label">
+                        + Characteristic
+                      </InputLabel>
+                      <Select
+                        label="characteristic-label"
+                        name="characteristic"
+                        value={item.characteristic}
+                        onChange={onDamage(index)}
+                      >
+                        <MenuItem value={undefined}>None</MenuItem>
+                        {states.map((item) => (
+                          <MenuItem key={item} value={item}>
+                            {item}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <TextField
+                      label="Additional (+)"
+                      name="additional"
+                      value={item.additional}
+                      placeholder="0"
+                      {...sharedInputProps}
                       onChange={onDamage(index)}
-                    >
-                      {damageType.map((item) => (
-                        <MenuItem key={item} value={item}>
-                          {item}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                </Grid>
-              </>
-            ))}
-          <Grid item xs={12}>
-            <Button
-              size="small"
-              variant="outlined"
-              color="primary"
-              onClick={() =>
-                onChange({ name: "damages", value: [...(damages || []), {}] })
-              }
-            >
-              ADD DAMAGE
-            </Button>
-          </Grid>
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <FormControl size="small">
+                      <InputLabel id="type-label">Type</InputLabel>
+                      <Select
+                        label="type-label"
+                        name="type"
+                        value={item.type}
+                        onChange={onDamage(index)}
+                      >
+                        {damageType.map((item) => (
+                          <MenuItem key={item} value={item}>
+                            {item}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Grid>
+                </>
+              ))}
+            <Grid item xs={12}>
+              <Button
+                size="small"
+                variant="outlined"
+                color="primary"
+                onClick={() =>
+                  onChange({ name: "damages", value: [...(damages || []), {}] })
+                }
+              >
+                ADD DAMAGE
+              </Button>
+            </Grid>
 
-          {/* <Grid item xs={6}>
+            {/* <Grid item xs={6}>
             <TextField
               label="Target"
               name="target"
@@ -236,24 +240,25 @@ const Edit = ({ action, state, onEdit, switchView, title }) => {
               {...sharedInputProps}
             />
           </Grid> */}
-        </>
-      )}
-      <Grid item xs={12}>
-        <TextField
-          label="Description"
-          name="description"
-          multiline
-          fullWidth
-          value={description}
-          {...sharedInputProps}
-        />
+          </>
+        )}
+        <Grid item xs={12}>
+          <TextField
+            label="Description"
+            name="description"
+            multiline
+            fullWidth
+            value={description}
+            {...sharedInputProps}
+          />
+        </Grid>
+        <Grid item xs={1}>
+          <Button size="small" onClick={switchView}>
+            Save
+          </Button>
+        </Grid>
       </Grid>
-      <Grid item xs={1}>
-        <Button size="small" onClick={switchView}>
-          Save
-        </Button>
-      </Grid>
-    </Grid>
+    </Card>
   );
 };
 

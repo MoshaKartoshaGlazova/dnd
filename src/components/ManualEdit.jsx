@@ -5,7 +5,7 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
-import { size, type } from "../Constants";
+import { challengeRating, size, type} from "../Constants";
 import BottomTabs from "./BottomTabs";
 import States from "./States";
 import Actions from "./actions";
@@ -26,7 +26,8 @@ const ManualEdit = () => {
       >
         <Grid item >
           <TextField
-            sx={{ minWidth: 180 }}
+            sx={{ maxWidth: 180,
+              minWidth: 180 }}
             label="Name"
             variant="outlined"
             size="small"
@@ -46,13 +47,11 @@ const ManualEdit = () => {
               label="challenge-rating-label"
               onChange={(event) => onChange(event.target)}
             >
-              {[1 / 8, 1 / 4, 1 / 2, ...new Array(31).keys()]
-                .sort()
-                .map((item) => (
-                  <MenuItem key={item} value={item}>
-                    {item}
-                  </MenuItem>
-                ))}
+              {challengeRating.map((item) => (
+                <MenuItem key={item} value={item}>
+                  {item}
+                </MenuItem>
+              ))}
             </Select>
           </FormControl>
         </Grid>

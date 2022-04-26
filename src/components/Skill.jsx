@@ -29,7 +29,7 @@ const Skill = ({ label, listName, onChange, state: currentState }) => {
     <Chip
       variant="outlined"
       sx={{
-        margin: 0.5,
+        
         minWidth: 165,
         justifyContent: "left",
         border: "hidden",

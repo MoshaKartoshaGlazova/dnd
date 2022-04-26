@@ -26,17 +26,27 @@ const List = ({ state, onChange, title }) => {
   };
   return (
     <>
-      <Typography
-        variant="h6"
+      <Grid
         sx={{
           borderBottomStyle: "solid",
           borderImage:
-            "linear-gradient(90deg, #2B6383 45.82%, rgba(43, 99, 131, 0) 82.01%) 1",
+            "linear-gradient(90deg, #2B6383 45.82%, rgba(43, 99, 131, 0) 100%) 1",
         }}
-        color="primary"
+        container
+        direction="row"
+        justifyContent="space-between"
       >
-        {toCapitalCase(title)}
-      </Typography>
+        <Grid item>
+          <Typography variant="h6" color="primary" fontWeight="bold">
+            {toCapitalCase(title)}
+          </Typography>
+        </Grid>
+        <Grid item>
+          <Button sx={{ marginLeft: 1 }} onClick={onAdd}>
+            Add
+          </Button>
+        </Grid>
+      </Grid>
       <Grid
         container
         direction="column"
@@ -76,7 +86,6 @@ const List = ({ state, onChange, title }) => {
             );
         })}
       </Grid>
-      <Button onClick={onAdd}>Add</Button>
     </>
   );
 };
