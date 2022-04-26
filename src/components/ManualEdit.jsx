@@ -24,7 +24,7 @@ const ManualEdit = () => {
         justifyContent="center"
         spacing={2}
       >
-        <Grid item xs={3}>
+        <Grid item >
           <TextField
             sx={{ minWidth: 180 }}
             label="Name"
@@ -35,7 +35,7 @@ const ManualEdit = () => {
             onChange={(event) => onChange(event.target)}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item >
           <FormControl item sx={{ minWidth: 180 }} size="small">
             <InputLabel id="challenge-rating-label">
               Challenge rating
