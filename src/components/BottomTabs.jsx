@@ -28,6 +28,7 @@ const BottomTabs = ({ onChange, currentState }) => {
             "dmg.  IMMUNITIES",
             "dmg.  Resistance",
             "CoND.  IMMUNITIES",
+            "speed",
             "sanses",
             "languages",
           ].map((item) => (
@@ -91,6 +92,25 @@ const BottomTabs = ({ onChange, currentState }) => {
       <TabPanel value={value} index={5}>
         <Grid container justifyContent="center" spacing={2}>
           <Grid item>
+            <Sense onChange={onChange} label="Walk" />
+          </Grid>
+          <Grid item>
+            <Sense onChange={onChange} label="Burrow" />
+          </Grid>
+          <Grid item>
+            <Sense onChange={onChange} label="Climb" />
+          </Grid>
+          <Grid item>
+            <Sense onChange={onChange} label="Fly" />
+          </Grid>
+          <Grid item>
+            <Sense onChange={onChange} label="Swim" />
+          </Grid>
+        </Grid>
+      </TabPanel>
+      <TabPanel value={value} index={6}>
+        <Grid container justifyContent="center" spacing={2}>
+          <Grid item>
             <Sense onChange={onChange} label="Darkvision" />
           </Grid>
           <Grid item>
@@ -104,7 +124,7 @@ const BottomTabs = ({ onChange, currentState }) => {
           </Grid>
         </Grid>
       </TabPanel>
-      <TabPanel value={value} index={6}>
+      <TabPanel value={value} index={7}>
         <CheckboxList
           array={languages}
           listName="languages"
