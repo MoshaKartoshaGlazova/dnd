@@ -1,11 +1,12 @@
 import { ThemeProvider } from "@mui/material";
-import "./App.css";
 import { Main } from "./pages/main";
 import { theme } from "./theme";
+import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Main />
     </ThemeProvider>
   );

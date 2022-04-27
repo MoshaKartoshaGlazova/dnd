@@ -21,10 +21,28 @@ const States = ({ state, onChange }) => {
   };
   return (
     <>
-      <Grid sx={{ marginTop: 2}} container justifyContent="center" spacing={1}>
-        {states.map((item) => (
-          State(item, state, onInput, onSave)
-        ))}
+      <Grid
+        sx={{
+          marginBottom: 2,
+          borderBottomStyle: "solid",
+          borderImage:
+            "linear-gradient(90deg, #2B6383 45.82%, rgba(43, 99, 131, 0) 100%) 1",
+        }}
+        container
+        direction="row"
+        justifyContent="space-between"
+      >
+        <Grid
+          sx={{
+            margin: 0,
+            marginBottom: 2,
+          }}
+          container
+          justifyContent="center"
+          spacing={1}
+        >
+          {states.map((item) => State(item, state, onInput, onSave))}
+        </Grid>
       </Grid>
     </>
   );
@@ -32,38 +50,51 @@ const States = ({ state, onChange }) => {
 
 export default States;
 
-const State =(item, state, onInput, onSave) => {
-  return <Grid item key={item}>
-    <Card sx={{ width: 124, height: 64,}}>
-      <InputLabel
-        sx={{
-          paddingLeft: 1.5,
-          fontWeight: "bold",
-          color: "#2B6383" 
-        }}
-      >
-        {item}
-      </InputLabel>
-      <input
-        style={{
-          marginLeft: 8,
-          marginTop: -4,
-          width: 32,
-          height: 32,
-          fontSize: "larger",
-          textAlign: "center",
-        }}
-        name={item}
-        value={state.states?.[item] ?? "0"}
-        onChange={({ target }) => onInput(target)} />
-      <FormControlLabel
-        sx={{marginBottom: 0, marginLeft: -1,  marginTop: -2,  marginRight: 0}}
-        control={<Checkbox 
-          checked={state.saves?.includes(item) ?? false}
-          name={item}
-          onChange={({ target }) => onSave(target)} />}
-        label="Save" />
-    </Card>
-  </Grid>;
-}
-
+const State = (item, state, onInput, onSave) => {
+  return (
+    <>
+      <Grid item key={item}>
+        <Card sx={{ width: 124, height: 64 }}>
+          <InputLabel
+            sx={{
+              paddingLeft: 1.5,
+              fontWeight: "bold",
+              color: "#2B6383",
+            }}
+          >
+            {item}
+          </InputLabel>
+          <input
+            style={{
+              marginLeft: 8,
+              marginTop: -4,
+              width: 32,
+              height: 32,
+              fontSize: "larger",
+              textAlign: "center",
+            }}
+            name={item}
+            value={state.states?.[item] ?? "0"}
+            onChange={({ target }) => onInput(target)}
+          />
+          <FormControlLabel
+            sx={{
+              marginBottom: 0,
+              marginLeft: -1,
+              marginTop: -2,
+              marginRight: 0,
+            }}
+            control={
+              <Checkbox
+                checked={state.saves?.includes(item) ?? false}
+                name={item}
+                onChange={({ target }) => onSave(target)}
+              />
+            }
+            label="Save"
+          />
+        </Card>
+      </Grid>
+    </>
+  );
+};

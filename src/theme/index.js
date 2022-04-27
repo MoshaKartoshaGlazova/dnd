@@ -6,6 +6,10 @@ export const theme = createTheme({
     danger: orange[500],
   },
   palette: {
+    background: {
+      default: "#F3F9FF",
+      paper: "#F3F9FF",
+    } ,
     primary: {
       main: "#2B6383",
     },
@@ -34,5 +38,11 @@ export const theme = createTheme({
         },
       },
     },
+    MuiOutlinedInput:{
+      styleOverrides: {
+        root: {
+            backgroundColor: "#FFFFFF",
+        },
+    },
   },
-});
+}});

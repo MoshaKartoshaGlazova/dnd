@@ -1,6 +1,7 @@
 import { Grid, IconButton, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import { makeStyles } from "@material-ui/core/styles";
 import React, { useState } from "react";
 
 const View = ({ action, switchView, onDelete }) => {
@@ -18,6 +19,16 @@ const View = ({ action, switchView, onDelete }) => {
     attack,
     cost,
   } = action;
+
+  const useStyles = makeStyles({
+    tr: {
+      background: "#f1f1f1",
+      "&:hover": {
+        background: "#f00",
+      },
+    },
+  });
+
   const [showActionButtons, setShowActionButtons] = useState(false);
   return (
     <Grid
@@ -28,8 +39,20 @@ const View = ({ action, switchView, onDelete }) => {
       marginTop={2}
       onMouseEnter={() => setShowActionButtons(true)}
       onMouseLeave={() => setShowActionButtons(false)}
+      sx={{
+        "&:hover": {
+          cursor: "context-menu",
+          backgroundColor: "rgba(43, 99, 131, 0.2)",
+        },
+      }}
     >
-      <Grid item container direction="row" justifyContent="space-between">
+      <Grid
+        sx={{ margin: 1 }}
+        item
+        container
+        direction="row"
+        justifyContent="space-between"
+      >
         <Grid margin="auto 0" item>
           <Typography padding="5px 0" fontWeight="bold">
             {name}

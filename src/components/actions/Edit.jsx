@@ -30,7 +30,6 @@ const Edit = ({ action, state, onEdit, switchView, title }) => {
   } = action;
   const onChange = ({ name, value }) => onEdit({ ...action, [name]: value });
   const sharedInputProps = {
-    variant: "outlined",
     size: "small",
     onChange: (event) => onChange(event.target),
   };
@@ -46,9 +45,10 @@ const Edit = ({ action, state, onEdit, switchView, title }) => {
 
   return (
     <Card sx={{ padding: 1 }}>
-      <Grid item container justifyContent="center" spacing={2} marginTop={2}>
-        <Grid item xs={title === "legendaryactions" ? 10 : 12}>
+      <Grid item container justifyContent="center" spacing={2}>
+        <Grid item>
           <TextField
+            xs={{ position: "center" }}
             label="Name"
             name="name"
             value={name}

@@ -119,6 +119,7 @@ const ManualEdit = () => {
             label="Armor"
             variant="outlined"
             size="small"
+            type="number"
             name="armor"
             onChange={(event) => onChange(event.target)}
           />
@@ -147,6 +148,7 @@ const ManualEdit = () => {
             label="Hit Dice Number"
             variant="outlined"
             size="small"
+            type="number"
             name="hitDiceNumber"
             onChange={(event) => onChange(event.target)}
           />
