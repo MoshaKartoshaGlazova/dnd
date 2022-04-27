@@ -29,9 +29,9 @@ const View = ({ action, switchView, onDelete }) => {
       onMouseEnter={() => setShowActionButtons(true)}
       onMouseLeave={() => setShowActionButtons(false)}
     >
-      <Grid xs={{minHeight: 34}} item container direction="row" justifyContent="space-between">
+      <Grid item container direction="row" justifyContent="space-between">
         <Grid margin="auto 0" item>
-          <Typography xs={{minHeight: 64}} fontWeight="bold">
+          <Typography padding="5px 0" fontWeight="bold">
             {name}
             {cost && ` ${cost} Action(s)`}
           </Typography>
