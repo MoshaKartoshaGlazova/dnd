@@ -8,7 +8,7 @@ const Alignment = ({ state, onChange }) => {
     onChange({
       name,
       value: alignment_view.filter((element) => element.value == value)[0]
-        .label,
+        .label.toLowerCase(),
     });
   };
 
@@ -16,7 +16,7 @@ const Alignment = ({ state, onChange }) => {
     onChange({
       name,
       value: alignment_behavior.filter((element) => element.value == value)[0]
-        .label,
+        .label.toLowerCase(),
     });
   };
 

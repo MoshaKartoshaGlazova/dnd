@@ -3,6 +3,25 @@ import Grid from "@mui/material/Grid";
 import { Button, TextField, Typography } from "@mui/material";
 
 const CharacterView = ({ state }) => {
+  console.log(state);
+  const CheckAligment = () => {
+    if (state.alignment != false) {
+      if (
+        state.alignment_view == "Neutral" &&
+        state.alignment_behavior == "Neutral"
+      ) {
+        return "true neutral";
+      } else {
+        return state.alignment_behavior + " " + state.alignment_view;
+      }
+    } else {
+      return "unaligned";
+    }
+  };
+  const isAlViewNull = () => {
+    return "alignment_view" in state;
+  };
+
   return (
     <Grid
       sx={{
@@ -27,8 +46,9 @@ const CharacterView = ({ state }) => {
           fontWeight="light"
           fontStyle="italic"
         >
-          {state?.size ?? "Small"} {state?.type ?? "Humanoid"}{" "}
-          {state?.subType ? "(" + state.subType + ")" : ""}
+          {state?.size ?? "Small"} {state?.type ?? "Humanoid"}
+          {state?.subType ? "(" + state.subType + ")" : ""} {", "}
+          {CheckAligment()}
         </Typography>
       </Grid>
     </Grid>

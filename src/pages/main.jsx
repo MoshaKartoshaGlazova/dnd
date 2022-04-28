@@ -7,7 +7,11 @@ import { Box, Tab, Tabs } from "@mui/material";
 export const Main = () => {
   const [value, setValue] = React.useState(0);
 
-  const [state, setState] = useState({});
+  const [state, setState] = useState({
+    alignment_view: "good",
+    alignment_behavior: "lawful",
+    aligment: false,
+  });
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
