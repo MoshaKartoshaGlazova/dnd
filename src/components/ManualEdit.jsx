@@ -155,12 +155,8 @@ const ManualEdit = ({ state, setState }) => {
               name="armorType"
               onChange={(event) => onChange(event.target)}
             >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value="Custom">Custom</MenuItem>
+              <MenuItem value="Natural">Natural</MenuItem>
             </Select>
           </FormControl>
         </Grid>

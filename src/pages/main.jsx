@@ -11,6 +11,13 @@ export const Main = () => {
     alignment_view: "good",
     alignment_behavior: "lawful",
     aligment: false,
+    states: {
+      STR: "10",
+      DEX: "10",
+      CON: "10",
+      INT: "10",
+      WIS: "10",
+      CHA: "10",}
   });
 
   const handleChange = (event, newValue) => {

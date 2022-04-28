@@ -5,6 +5,21 @@ export const theme = createTheme({
   status: {
     danger: orange[500],
   },
+  typography: {
+
+    monsterDescription:{
+      fontWeight:"light",
+      fontStyle:"italic",
+      color: "#26282A",
+      fontSize: 14,
+    },
+    label:{
+      fontWeight: "bold"
+    },
+    regular:{
+      fontWeight: "regular"
+    }
+  },
   palette: {
     background: {
       default: "#F3F9FF",

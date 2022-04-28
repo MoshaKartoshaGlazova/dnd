@@ -74,7 +74,7 @@ const State = (item, state, onInput, onSave) => {
               textAlign: "center",
             }}
             name={item}
-            value={state.states?.[item] ?? "0"}
+            value={state.states?.[item] ?? "10"}
             onChange={({ target }) => onInput(target)}
           />
           <FormControlLabel
