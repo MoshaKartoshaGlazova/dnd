@@ -9,14 +9,13 @@ import { challengeRating, conditions, size, type } from "../Constants";
 import BottomTabs from "./BottomTabs";
 import States from "./States";
 import Actions from "./actions";
-import Aligment from "./Aligment";
+import Alignment from "./Alignment";
 import { Checkbox } from "@mui/material";
 import { FormControlLabel, FormGroup } from "@mui/material";
 
 const ManualEdit = ({ state, setState }) => {
   const onChange = ({ name, value }) => {
     setState({ ...state, [name]: value });
-    console.log(state.aligment);
   };
   return (
     <>
@@ -63,14 +62,14 @@ const ManualEdit = ({ state, setState }) => {
           <FormControlLabel
             control={
               <Checkbox
-                name="aligment"
-                checked={state?.aligment ?? false}
+                name="alignment"
+                checked={state?.alignment ?? false}
                 onChange={() =>
-                  onChange({ name: "aligment", value: !state.aligment })
+                  onChange({ name: "alignment", value: !state.alignment })
                 }
               />
             }
-            label="Aligment"
+            label="Alignment"
           />
         </Grid>
       </Grid>
@@ -178,9 +177,9 @@ const ManualEdit = ({ state, setState }) => {
         </Grid>
       </Grid>
       <Grid sx={{ margin: 1 }}>
-        <Aligment onChange={onChange} state={state} />
+        <Alignment onChange={onChange} state={state} />
       </Grid>
-      
+
       <Grid
         sx={{
           marginBottom: 2,

@@ -94,7 +94,7 @@ export const type = [
 
 export const states = ["STR", "DEX", "CON", "INT", "WIS", "CHA"];
 
-export const aligment_view = [
+export const alignment_view = [
   {
     value: 0,
     label: "Good",
@@ -109,7 +109,7 @@ export const aligment_view = [
   },
 ];
 
-export const aligment_behavior = [
+export const  alignment_behavior = [
   {
     value: 0,
     label: "Lawful",

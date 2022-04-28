@@ -1,18 +1,10 @@
 import React from "react";
-import { Box, Grid, Tab, Tabs, Slider } from "@mui/material";
-import CheckboxList from "../components/CheckboxList";
-import { conditions, damageType, languages, skills } from "../Constants";
-import Skill from "./Skill";
-import Sense from "./Sense";
-import TabPanel, { a11yProps } from "./TabPanel";
-import TextField from "@mui/material/TextField";
-import {
-  aligment_view as alignment_view,
-  aligment_behavior as alignment_behavior,
-} from "../Constants";
+import { Grid, Slider } from "@mui/material";
+
+import { alignment_view, alignment_behavior } from "../Constants";
 
 const Alignment = ({ state, onChange }) => {
-  const onAligmantViewChange = ({ name, value }) => {
+  const onAlignmentViewChange = ({ name, value }) => {
     onChange({
       name,
       value: alignment_view.filter((element) => element.value == value)[0]
@@ -40,7 +32,7 @@ const Alignment = ({ state, onChange }) => {
         spacing={2}
       >
         <Grid minWidth={300}>
-          {state.aligment && (
+          {state.alignment && (
             <>
               <Slider
                 min={0}
@@ -50,7 +42,7 @@ const Alignment = ({ state, onChange }) => {
                 marks={alignment_view}
                 name="alignment_view"
                 valueLabelDisplay="off"
-                onChange={({ target }) => onAligmantViewChange(target)}
+                onChange={({ target }) => onAlignmentViewChange(target)}
               />
               <Slider
                 track={false}
@@ -60,7 +52,7 @@ const Alignment = ({ state, onChange }) => {
                 marks={alignment_behavior}
                 name="alignment_behavior"
                 valueLabelDisplay="off"
-                onChange={({ target }) => onAligmantBehaviorChange(target)}
+                onChange={({ target }) => onAlignmentBehaviorChange(target)}
               />
             </>
           )}
@@ -70,4 +62,4 @@ const Alignment = ({ state, onChange }) => {
   );
 };
 
-export default Aligment;
+export default Alignment;
