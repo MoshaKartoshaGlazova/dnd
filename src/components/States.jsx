@@ -54,10 +54,10 @@ const State = (item, state, onInput, onSave) => {
   return (
     <>
       <Grid item key={item}>
-        <Card sx={{ width: 124, height: 64 }}>
+        <Card sx={{ width: 120, height: 64 }}>
           <InputLabel
             sx={{
-              paddingLeft: 1.5,
+              paddingLeft: 1,
               fontWeight: "bold",
               color: "#2B6383",
             }}

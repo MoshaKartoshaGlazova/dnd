@@ -5,21 +5,26 @@ import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
-import { challengeRating, size, type } from "../Constants";
+import { challengeRating, conditions, size, type } from "../Constants";
 import BottomTabs from "./BottomTabs";
 import States from "./States";
 import Actions from "./actions";
+import Aligment from "./Aligment";
+import { Checkbox } from "@mui/material";
+import { FormControlLabel, FormGroup } from "@mui/material";
 
-const ManualEdit = () => {
-  const [state, setState] = useState({});
+const ManualEdit = ({ state, setState }) => {
   const onChange = ({ name, value }) => {
-    console.log(state, name, value);
     setState({ ...state, [name]: value });
+    console.log(state.aligment);
   };
   return (
     <>
       <Grid
-        sx={{ flexGrow: 1, marginTop: 1 }}
+        sx={{
+          flexGrow: 1,
+          marginTop: 1,
+        }}
         container
         justifyContent="center"
         spacing={2}
@@ -30,8 +35,8 @@ const ManualEdit = () => {
             label="Name"
             variant="outlined"
             size="small"
-            value={state.name}
-            name="Name"
+            value={state.value}
+            name="name"
             onChange={(event) => onChange(event.target)}
           />
         </Grid>
@@ -53,6 +58,20 @@ const ManualEdit = () => {
               ))}
             </Select>
           </FormControl>
+        </Grid>
+        <Grid item>
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="aligment"
+                checked={state?.aligment ?? false}
+                onChange={() =>
+                  onChange({ name: "aligment", value: !state.aligment })
+                }
+              />
+            }
+            label="Aligment"
+          />
         </Grid>
       </Grid>
       <Grid
@@ -108,7 +127,11 @@ const ManualEdit = () => {
         </Grid>
       </Grid>
       <Grid
-        sx={{ flexGrow: 1, marginTop: 1 }}
+        sx={{
+          flexGrow: 1,
+          marginTop: 1,
+          marginBottom: 2,
+        }}
         container
         justifyContent="center"
         spacing={2}
@@ -153,6 +176,21 @@ const ManualEdit = () => {
             onChange={(event) => onChange(event.target)}
           />
         </Grid>
+      </Grid>
+      <Grid sx={{ margin: 1 }}>
+        <Aligment onChange={onChange} state={state} />
+      </Grid>
+      
+      <Grid
+        sx={{
+          marginBottom: 2,
+          borderBottomStyle: "solid",
+          borderImage:
+            "linear-gradient(90deg, #2B6383 45.82%, rgba(43, 99, 131, 0) 100%) 1",
+        }}
+        item
+      >
+        {" "}
       </Grid>
       <States state={state} onChange={onChange} />
 

@@ -9,7 +9,6 @@ const CheckboxList = ({
   state,
   elementDisabled,
 }) => {
-
   const onCheck = (item) => {
     if (!state[listName]) {
       state[listName] = [item];
@@ -26,32 +25,32 @@ const CheckboxList = ({
         });
     }
   };
-  return array.map((item) =>{
+  return array.map((item) => {
     return BaseComponent ? (
-      <BaseComponent key={item} label={item} 
-      listName={listName}
-      onChange={onChange}
-      state={state}  />
+      <BaseComponent
+        key={item}
+        label={item}
+        listName={listName}
+        onChange={onChange}
+        state={state}
+      />
     ) : (
-      <FormControlLabel 
-      sx={{ minWidth: 165,marginTop: -1}}
+      <FormControlLabel
+        sx={{ minWidth: 165, marginTop: -1 }}
         key={item}
         control={
           <Checkbox
-            checked={state[listName]?.includes(item)??false}
+            checked={state[listName]?.includes(item) ?? false}
             onChange={() => {
               onCheck(item);
             }}
           />
         }
-        label={<Typography sx={
-          {fontSize: 13}
-        }> {item} </Typography>}
+        label={<Typography sx={{ fontSize: 13 }}> {item} </Typography>}
         disabled={elementDisabled && elementDisabled(item)}
       />
-    )
-      });
+    );
+  });
 };
 
 export default CheckboxList;
-

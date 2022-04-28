@@ -93,3 +93,33 @@ export const type = [
 ];
 
 export const states = ["STR", "DEX", "CON", "INT", "WIS", "CHA"];
+
+export const aligment_view = [
+  {
+    value: 0,
+    label: "Good",
+  },
+  {
+    value: 10,
+    label: 'Neutral',
+  },
+  {
+    value: 20,
+    label: 'Evil',
+  },
+];
+
+export const aligment_behavior = [
+  {
+    value: 0,
+    label: "Lawful",
+  },
+  {
+    value: 10,
+    label: 'Neutral',
+  },
+  {
+    value: 20,
+    label: 'Chaotic',
+  },
+];

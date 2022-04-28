@@ -7,19 +7,19 @@ const actionButtonsInit = [
     title: "SPECIAL TRAITS",
   },
   {
-    title: "ACTIONs",
+    title: "ACTIONS",
   },
   {
-    title: "BONUS ACTIONs",
+    title: "BONUS ACTION",
   },
   {
-    title: "REACTIONs",
+    title: "REACTIONS",
   },
   {
-    title: "LEGENDARY ACTIONs",
+    title: "LEGENDARY ACTIONS",
   },
   {
-    title: "LIAR ACTIONs",
+    title: "LIAR ACTIONS",
   },
 ];
 
