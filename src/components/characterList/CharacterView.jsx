@@ -8,8 +8,8 @@ const CharacterView = ({ state }) => {
   const CheckAligment = () => {
     if (state.alignment != false) {
       if (
-        state.alignment_view == "Neutral" &&
-        state.alignment_behavior == "Neutral"
+        state.alignment_view == "neutral" &&
+        state.alignment_behavior == "neutral"
       ) {
         return "true neutral";
       } else {

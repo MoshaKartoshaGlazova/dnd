@@ -5,6 +5,7 @@ import { conditions, damageType, languages, skills } from "../Constants";
 import Skill from "./Skill";
 import Sense from "./Sense";
 import TabPanel, { a11yProps } from "./TabPanel";
+import { Checkbox, FormControlLabel } from "@mui/material";
 
 const BottomTabs = ({ onChange, currentState }) => {
   const [value, setValue] = React.useState(0);
@@ -90,21 +91,56 @@ const BottomTabs = ({ onChange, currentState }) => {
         />
       </TabPanel>
       <TabPanel value={value} index={5}>
-        <Grid container justifyContent="center" spacing={2}>
+        <Grid container spacing={3} justifyContent="center ">
           <Grid item>
-            <Sense onChange={onChange} label="Walk" />
+            <Sense
+              sx={{ maxWidth: 180, minWidth: 180 }}
+              onChange={onChange}
+              label="Walk"
+            />
           </Grid>
           <Grid item>
-            <Sense onChange={onChange} label="Burrow" />
+            <Sense
+              sx={{ maxWidth: 180, minWidth: 180 }}
+              onChange={onChange}
+              label="Burrow"
+            />
           </Grid>
           <Grid item>
-            <Sense onChange={onChange} label="Climb" />
+            <Sense
+              sx={{ maxWidth: 180, minWidth: 180 }}
+              onChange={onChange}
+              label="Climb"
+            />
+          </Grid>
+
+          <Grid item>
+            <Sense
+              sx={{ maxWidth: 180, minWidth: 180 }}
+              onChange={onChange}
+              label="Swim"
+            />
           </Grid>
           <Grid item>
-            <Sense onChange={onChange} label="Fly" />
+            <Sense
+              sx={{ maxWidth: 180, minWidth: 180 }}
+              onChange={onChange}
+              label="Fly"
+            />
           </Grid>
           <Grid item>
-            <Sense onChange={onChange} label="Swim" />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  name="hover"
+                  checked={currentState?.hover ?? false}
+                  onChange={() =>
+                    onChange({ name: "hover", value: !currentState.hover })
+                  }
+                />
+              }
+              label="Hover"
+            />
           </Grid>
         </Grid>
       </TabPanel>
