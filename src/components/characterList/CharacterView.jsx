@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import { Button, TextField, Typography } from "@mui/material";
-import CharacterPoints from "./CharacherPoints";
+import CharacterPoints from "./CharacterPoints";
+import CharacterCards from "./CharacterCards";
 
 const CharacterView = ({ state }) => {
   console.log(state);
@@ -47,7 +48,7 @@ const CharacterView = ({ state }) => {
             //sx={{ color: "#2B6383" }}
           >
             {state?.size ?? "Small"} {state?.type ?? "Humanoid"}
-            {state?.subType ? "(" + state.subType + ")" : ""} {", "}
+            {state?.subType ? " (" + state.subType + ")" : ""} {", "}
             {CheckAligment()}
           </Typography>
         </Grid>
@@ -55,6 +56,7 @@ const CharacterView = ({ state }) => {
 
       <Grid sx={{ margin: 0 }}>
         <CharacterPoints state={state} />
+        <CharacterCards state={state} />
       </Grid>
     </>
   );

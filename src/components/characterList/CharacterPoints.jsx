@@ -96,11 +96,35 @@ const CharacterPoints = ({ state }) => {
         );
     }
   };
+  const printSpeed = () => {
+    let speedString = "";
+
+    if ("walk" in state && state.walk != "") {
+      speedString = speedString + state.walk + "ft.";
+    }
+    if ("burrow" in state && state.burrow != "") {
+      speedString = speedString + ", burrow " + state.burrow + "ft.";
+    }
+    if ("climb" in state && state.climb != "") {
+      speedString = speedString + ", climb " + state.climb + "ft.";
+    }
+    if ("fly" in state && state.fly != "") {
+      speedString = speedString + ", fly " + state.fly + "ft.";
+    }
+    if ("swim" in state && state.swim != "") {
+      speedString = speedString + ", swim " + state.swim + "ft.";
+    }
+    return speedString;
+  };
   return (
     <Grid
       sx={{
         flexGrow: 0,
         marginBottom: 1,
+
+        borderBottomStyle: "solid",
+        borderImage:
+          "linear-gradient(90deg, #2B6383 45.82%, rgba(43, 99, 131, 0) 100%) 1",
       }}
       container
       justifyContent="left"
@@ -116,6 +140,11 @@ const CharacterPoints = ({ state }) => {
         <Typography variant="regular">
           <Typography variant="label">{"Hit Points:"}</Typography>{" "}
           {calculateHitPoints()} {"(" + printFormulaHipPoints() + ")"}
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="regular">
+          <Typography variant="label">{"Speed:"}</Typography> {printSpeed()}
         </Typography>
       </Grid>
     </Grid>
