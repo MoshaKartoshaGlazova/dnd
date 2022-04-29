@@ -5,9 +5,9 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import React from "react";
 
 const states = [
-  { value: undefined, icon: <CheckBoxOutlineBlankIcon /> },
-  { value: "one", icon: <DoneIcon /> },
-  { value: "two", icon: <DoneAllIcon /> },
+  { value: "no", icon: <CheckBoxOutlineBlankIcon /> },
+  { value: "pro", icon: <DoneIcon /> },
+  { value: "expert", icon: <DoneAllIcon /> },
 ];
 
 const Skill = ({ label, listName, onChange, state: currentState }) => {

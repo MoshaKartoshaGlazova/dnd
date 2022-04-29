@@ -39,7 +39,7 @@ const BottomTabs = ({ onChange, currentState }) => {
       </Box>
       <TabPanel value={value} index={0}>
         <CheckboxList
-          array={skills}
+          array={skills.map((item) => item.name)}
           listName="skills"
           BaseComponent={Skill}
           onChange={onChange}

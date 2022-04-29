@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import { Button, TextField, Typography } from "@mui/material";
 import CharacterPoints from "./CharacterPoints";
 import CharacterCards from "./CharacterCards";
+import ThrowsAndSkills from "./ThrowsAndSkills";
 
 const CharacterView = ({ state }) => {
   console.log(state);
@@ -57,6 +58,7 @@ const CharacterView = ({ state }) => {
       <Grid sx={{ margin: 0 }}>
         <CharacterPoints state={state} />
         <CharacterCards state={state} />
+        <ThrowsAndSkills state={state} />
       </Grid>
     </>
   );

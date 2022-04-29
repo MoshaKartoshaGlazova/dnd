@@ -17,6 +17,22 @@ const ManualEdit = ({ state, setState }) => {
   const onChange = ({ name, value }) => {
     setState({ ...state, [name]: value });
   };
+
+  const onChangeRaiting = (event) => {
+    onFinalStateChallengeChange(
+      challengeRating.find((element) => element.value == event.target.value),
+      event.target
+    );
+  };
+
+  const onFinalStateChallengeChange = (
+    { value2, exp, profBonus },
+    { name, value }
+  ) => {
+    console.log(name);
+    setState({ ...state, exp: exp, profBonus: profBonus, [name]: value });
+  };
+  
   return (
     <>
       <Grid
@@ -48,11 +64,11 @@ const ManualEdit = ({ state, setState }) => {
               defaultValue=""
               name="challengeRating"
               label="challenge-rating-label"
-              onChange={(event) => onChange(event.target)}
+              onChange={(event) => onChangeRaiting(event)}
             >
               {challengeRating.map((item) => (
-                <MenuItem key={item} value={item}>
-                  {item}
+                <MenuItem key={item.value} value={item.value}>
+                  {item.value}
                 </MenuItem>
               ))}
             </Select>
