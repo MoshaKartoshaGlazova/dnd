@@ -1,15 +1,7 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import {
-  Card,
-  Checkbox,
-  FormControlLabel,
-  Typography,
-  Box,
-} from "@mui/material";
-import InputLabel from "@mui/material/InputLabel";
+import Typography from "@mui/material/Typography";
 import { states } from "../../Constants";
-import { fontSize } from "@mui/system";
 
 const CharacterCards = ({ state }) => {
   return (

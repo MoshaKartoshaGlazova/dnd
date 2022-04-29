@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid";
 import { Card, Checkbox, FormControlLabel } from "@mui/material";
 import InputLabel from "@mui/material/InputLabel";
 import { states } from "../Constants";
-import { fontSize } from "@mui/system";
 
 const States = ({ state, onChange }) => {
   const onSave = ({ name, value }) => {

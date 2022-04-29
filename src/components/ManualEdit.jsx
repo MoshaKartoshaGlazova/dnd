@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import TextField from "@mui/material/TextField";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 import Grid from "@mui/material/Grid";
-import { challengeRating, conditions, size, type } from "../Constants";
+import { challengeRating, size, type } from "../Constants";
 import BottomTabs from "./BottomTabs";
 import States from "./States";
 import Actions from "./actions";
 import Alignment from "./Alignment";
-import { Checkbox } from "@mui/material";
-import { FormControlLabel, FormGroup } from "@mui/material";
 
 const ManualEdit = ({ state, setState }) => {
   const onChange = ({ name, value }) => {
@@ -20,7 +20,7 @@ const ManualEdit = ({ state, setState }) => {
 
   const onChangeRaiting = (event) => {
     onFinalStateChallengeChange(
-      challengeRating.find((element) => element.value == event.target.value),
+      challengeRating.find((element) => element.value === event.target.value),
       event.target
     );
   };

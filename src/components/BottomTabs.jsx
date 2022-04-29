@@ -1,11 +1,17 @@
 import React from "react";
-import { Box, Grid, Tab, Tabs } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Tab,
+  Tabs,
+  Checkbox,
+  FormControlLabel,
+} from "@mui/material";
 import CheckboxList from "../components/CheckboxList";
 import { conditions, damageType, languages, skills } from "../Constants";
 import Skill from "./Skill";
 import Sense from "./Sense";
 import TabPanel, { a11yProps } from "./TabPanel";
-import { Checkbox, FormControlLabel } from "@mui/material";
 
 const BottomTabs = ({ onChange, currentState }) => {
   const [value, setValue] = React.useState(0);

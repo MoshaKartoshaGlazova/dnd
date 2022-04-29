@@ -1,16 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import Grid from "@mui/material/Grid";
-import { Button, TextField, Typography } from "@mui/material";
-import { ControlPointDuplicate, StopSharp } from "@material-ui/icons";
+import { Typography } from "@mui/material";
 import { skills } from "../../Constants";
 
 const ThrowsAndSkills = ({ state }) => {
   const getSortedSkills = () => {
     if ("skills" in state) {
       const sortSkills = Object.keys(state.skills)
-        .filter((key) => {
-          return state.skills[key] != "no";
-        })
+        .filter((key) => state.skills[key] !== "no")
         .sort()
         .reduce((res, key) => ((res[key] = state.skills[key]), res), {});
       return sortSkills;
@@ -33,23 +30,27 @@ const ThrowsAndSkills = ({ state }) => {
     >
       <Grid item xs={12}>
         <Typography variant="regular">
-          <Typography variant="label">{"Skills"}</Typography>
-          {Object.keys(getSortedSkills()).map((item) =>
-            InputSkill(item, state)
-          )}
+          <Typography variant="label">{"Skills "}</Typography>
+          {Object.keys(getSortedSkills())
+            .map((item) => InputSkill(item, state))
+            .join(", ")}
         </Typography>
       </Grid>
     </Grid>
   );
 };
 
+const calculateModifier = (monster_char) => {
+  return Math.floor((monster_char - 10) / 2);
+};
+
 const InputSkill = (item, state) => {
-  const calculateModifier = (monster_char) => {
-    return Math.floor((monster_char - 10) / 2);
+  const findSkillStat = () => {
+    return skills.find((element) => element.name === item).stat;
   };
 
   const countModifier = () => {
-    if (state.skills[item] == "expert") {
+    if (state.skills[item] === "expert") {
       const modifier =
         calculateModifier(state.states[findSkillStat()]) +
         (state?.profBonus ?? 0) * 2;
@@ -71,10 +72,7 @@ const InputSkill = (item, state) => {
     }
   };
 
-  const findSkillStat = () => {
-    return skills.find((element) => element.name == item).stat;
-  };
-  return <Typography key={item}>{item + countModifier() + " "}</Typography>;
+  return item + countModifier();
 };
 
 export default ThrowsAndSkills;

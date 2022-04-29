@@ -1,5 +1,5 @@
-import { Box } from "@mui/system";
 import React from "react";
+import Box from "@mui/material/Box";
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;

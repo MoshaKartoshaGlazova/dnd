@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Grid from "@mui/material/Grid";
-import { Button, TextField, Typography } from "@mui/material";
-import { StopSharp } from "@material-ui/icons";
+import { Typography } from "@mui/material";
 
 const CharacterPoints = ({ state }) => {
   const calculateHitPoints = () => {
@@ -21,6 +20,8 @@ const CharacterPoints = ({ state }) => {
           return multiplication(6.5);
         case "Gargantuan":
           return multiplication(10.5);
+        default:
+          break;
       }
     }
   };

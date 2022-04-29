@@ -1,33 +1,19 @@
+import React, { useState } from "react";
 import { Grid, IconButton, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { makeStyles } from "@material-ui/core/styles";
-import React, { useState } from "react";
 
 const View = ({ action, switchView, onDelete }) => {
   const {
     name,
-    characteristic,
     type,
     range,
     magicBonus,
-    proficiency,
     criticalRange,
-    //target,
     damages,
     description,
-    attack,
     cost,
   } = action;
-
-  const useStyles = makeStyles({
-    tr: {
-      background: "#f1f1f1",
-      "&:hover": {
-        background: "#f00",
-      },
-    },
-  });
 
   const [showActionButtons, setShowActionButtons] = useState(false);
   return (

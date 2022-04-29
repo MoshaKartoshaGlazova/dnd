@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Grid from "@mui/material/Grid";
-import { Button, TextField, Typography } from "@mui/material";
+import Typography from "@mui/material/Typography";
 import CharacterPoints from "./CharacterPoints";
 import CharacterCards from "./CharacterCards";
 import ThrowsAndSkills from "./ThrowsAndSkills";
@@ -8,10 +8,10 @@ import ThrowsAndSkills from "./ThrowsAndSkills";
 const CharacterView = ({ state }) => {
   console.log(state);
   const CheckAligment = () => {
-    if (state.alignment != false) {
+    if (state.alignment !== false) {
       if (
-        state.alignment_view == "neutral" &&
-        state.alignment_behavior == "neutral"
+        state.alignment_view === "neutral" &&
+        state.alignment_behavior === "neutral"
       ) {
         return "true neutral";
       } else {
@@ -20,9 +20,6 @@ const CharacterView = ({ state }) => {
     } else {
       return "unaligned";
     }
-  };
-  const isAlViewNull = () => {
-    return "alignment_view" in state;
   };
 
   return (
