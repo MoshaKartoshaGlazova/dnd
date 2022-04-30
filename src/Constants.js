@@ -346,3 +346,25 @@ export const challengeRating = [
   },
   
 ];
+
+
+export const actionButtonsInit = [
+  {
+    title: "SPECIAL TRAITS",
+  },
+  {
+    title: "ACTIONS",
+  },
+  {
+    title: "BONUS ACTION",
+  },
+  {
+    title: "REACTIONS",
+  },
+  {
+    title: "LEGENDARY ACTIONS",
+  },
+  {
+    title: "LIAR ACTIONS",
+  },
+];

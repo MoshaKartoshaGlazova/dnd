@@ -12,6 +12,7 @@ import { conditions, damageType, languages, skills } from "../Constants";
 import Skill from "./Skill";
 import Sense from "./Sense";
 import TabPanel, { a11yProps } from "./TabPanel";
+import Languages from "./Languages";
 
 const BottomTabs = ({ onChange, currentState }) => {
   const [value, setValue] = React.useState(0);
@@ -167,12 +168,7 @@ const BottomTabs = ({ onChange, currentState }) => {
         </Grid>
       </TabPanel>
       <TabPanel value={value} index={7}>
-        <CheckboxList
-          array={languages}
-          listName="languages"
-          onChange={onChange}
-          state={currentState}
-        />
+        <Languages onChange={onChange} state={currentState} />
       </TabPanel>
     </>
   );

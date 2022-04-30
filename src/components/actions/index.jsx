@@ -1,27 +1,7 @@
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import React, { useState } from "react";
+import { actionButtonsInit } from "../../Constants";
 import List from "./List";
-
-const actionButtonsInit = [
-  {
-    title: "SPECIAL TRAITS",
-  },
-  {
-    title: "ACTIONS",
-  },
-  {
-    title: "BONUS ACTION",
-  },
-  {
-    title: "REACTIONS",
-  },
-  {
-    title: "LEGENDARY ACTIONS",
-  },
-  {
-    title: "LIAR ACTIONS",
-  },
-];
 
 const Actions = ({ state, onChange }) => {
   const [actions, setActions] = useState(actionButtonsInit);
