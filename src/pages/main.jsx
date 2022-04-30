@@ -19,6 +19,7 @@ export const Main = () => {
       WIS: "10",
       CHA: "10",
     },
+    saves: [],
   });
 
   const handleChange = (event, newValue) => {

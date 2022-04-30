@@ -39,60 +39,48 @@ export const skills = [
     name: "Acrobatics",
   },
   {
-    stat: "DEX",
-    name: "Sleight of Hand",
-  },
-  {
-    stat: "DEX",
-    name: "Stealth",
+    stat: "WIS",
+    name: "Animal Handling",
   },
   {
     stat: "INT",
     name: "Arcana",
   },
   {
-    stat: "INT",
-    name: "History",
-  },
-  {
-    stat: "INT",
-    name: "Investigation",
-  },
-  {
-    stat: "INT",
-    name: "Nature",
-  },
-  {
-    stat: "INT",
-    name: "Religion",
-  },
-  {
-    stat: "WIS",
-    name: "Animal Handling",
-  },
-  {
-    stat: "WIS",
-    name: "Insight",
-  },
-  {
-    stat: "WIS",
-    name: "Medicine",
-  },
-  {
-    stat: "WIS",
-    name: "Perception",
-  },
-  {
-    stat: "WIS",
-    name: "Survival",
+    stat: "STR",
+    name: "Athletics",
   },
   {
     stat: "CHA",
     name: "Deception",
   },
   {
+    stat: "INT",
+    name: "History",
+  },
+  {
+    stat: "WIS",
+    name: "Insight",
+  },
+  {
     stat: "CHA",
     name: "Intimidation",
+  },
+  {
+    stat: "INT",
+    name: "Investigation",
+  },
+  {
+    stat: "WIS",
+    name: "Medicine",
+  },
+  {
+    stat: "INT",
+    name: "Nature",
+  },
+  {
+    stat: "WIS",
+    name: "Perception",
   },
   {
     stat: "CHA",
@@ -101,6 +89,22 @@ export const skills = [
   {
     stat: "CHA",
     name: "Persuasion",
+  },
+  {
+    stat: "INT",
+    name: "Religion",
+  },
+  {
+    stat: "DEX",
+    name: "Sleight of Hand",
+  },
+  {
+    stat: "DEX",
+    name: "Stealth",
+  },
+  {
+    stat: "WIS",
+    name: "Survival",
   },
 ];
 

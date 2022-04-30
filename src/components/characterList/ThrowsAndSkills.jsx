@@ -16,6 +16,16 @@ const ThrowsAndSkills = ({ state }) => {
       return sortSkills;
     }
   };
+
+  const calculateModifier = (monster_char) => {
+    return (
+      monster_char +
+      "+" +
+      (Math.floor((state.states[monster_char] - 10) / 2) +
+      (state?.profBonus ?? 0))
+    );
+  };
+
   return (
     <Grid
       sx={{
@@ -30,7 +40,16 @@ const ThrowsAndSkills = ({ state }) => {
     >
       <Grid item xs={12}>
         <Typography variant="regular">
-          <Typography variant="label">{"Skills "}</Typography>
+          <Typography variant="label">{"Saving Trows: "}</Typography>
+          {state.saves
+            .sort()
+            .map((item) => calculateModifier(item))
+            .join(", ")}
+        </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <Typography variant="regular">
+          <Typography variant="label">{"Skills: "}</Typography>
           {Object.keys(getSortedSkills())
             .map((item) => InputSkill(item, state))
             .join(", ")}
@@ -54,7 +73,6 @@ const InputSkill = (item, state) => {
       const modifier =
         calculateModifier(state.states[findSkillStat()]) +
         (state?.profBonus ?? 0) * 2;
-      console.log((state?.profBonus ?? 0) * 2);
       if (modifier >= 0) {
         return "+" + modifier;
       } else {
