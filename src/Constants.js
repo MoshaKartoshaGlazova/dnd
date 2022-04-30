@@ -16,6 +16,7 @@ export const languages = [
   "Sylvan",
   "Undercommon",
 ];
+
 export const conditions = [
   "Blinded",
   "Charmed",
@@ -33,7 +34,8 @@ export const conditions = [
   "Unconscious",
   "Exhaustion",
 ];
-export const skills = [ 
+
+export const skills = [
   {
     stat: "DEX",
     name: "Acrobatics",
@@ -126,9 +128,6 @@ export const damageType = [
 
 export const size = ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"];
 
-
-
-
 export const type = [
   "Aberration",
   "Beast",
@@ -155,26 +154,26 @@ export const alignment_view = [
   },
   {
     value: 10,
-    label: 'Neutral',
+    label: "Neutral",
   },
   {
     value: 20,
-    label: 'Evil',
+    label: "Evil",
   },
 ];
 
-export const  alignment_behavior = [
+export const alignment_behavior = [
   {
     value: 0,
     label: "Lawful",
   },
   {
     value: 10,
-    label: 'Neutral',
+    label: "Neutral",
   },
   {
     value: 20,
-    label: 'Chaotic',
+    label: "Chaotic",
   },
 ];
 
@@ -214,27 +213,32 @@ export const challengeRating = [
     exp: 700,
     profBonus: 2,
   },
-    {
+  {
     value: "4",
     exp: 1100,
     profBonus: 2,
-  },  {
+  },
+  {
     value: "5",
     exp: 1800,
     profBonus: 3,
-  },  {
+  },
+  {
     value: "6",
     exp: 2300,
     profBonus: 3,
-  },  {
+  },
+  {
     value: "7",
     exp: 2900,
     profBonus: 3,
-  },  {
+  },
+  {
     value: "8",
-    exp:3900,
+    exp: 3900,
     profBonus: 3,
-  },  {
+  },
+  {
     value: "9",
     exp: 5000,
     profBonus: 4,
@@ -344,9 +348,7 @@ export const challengeRating = [
     exp: 155000,
     profBonus: 9,
   },
-  
 ];
-
 
 export const actionButtonsInit = [
   {
@@ -354,17 +356,27 @@ export const actionButtonsInit = [
   },
   {
     title: "ACTIONS",
+    hasAttack: true,
   },
   {
     title: "BONUS ACTION",
+    hasAttack: true,
   },
   {
     title: "REACTIONS",
   },
   {
     title: "LEGENDARY ACTIONS",
+    isLegendary: true
   },
   {
     title: "LIAR ACTIONS",
   },
 ];
+
+export const atackType =[
+  "Mele Spell",
+  "Mele Weapone",
+  "Range Spell",
+  "Range Weapone"
+]

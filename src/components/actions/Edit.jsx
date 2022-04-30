@@ -11,9 +11,17 @@ import {
   Card,
 } from "@mui/material";
 import React from "react";
-import { damageType, states } from "../../Constants";
+import { atackType, damageType, states } from "../../Constants";
 
-const Edit = ({ action, state, onEdit, switchView, title }) => {
+const Edit = ({
+  action,
+  state,
+  onEdit,
+  switchView,
+  title,
+  hasAttack,
+  isLegendary,
+}) => {
   const {
     name,
     characteristic,
@@ -55,7 +63,7 @@ const Edit = ({ action, state, onEdit, switchView, title }) => {
             {...sharedInputProps}
           />
         </Grid>
-        {title === "legendaryactions" && (
+        {isLegendary && (
           <Grid item xs={6}>
             <TextField
               label="Cost"
@@ -65,19 +73,21 @@ const Edit = ({ action, state, onEdit, switchView, title }) => {
             />
           </Grid>
         )}
-        <Grid item xs={12}>
-          <FormControlLabel
-            sx={{ minWidth: 165 }}
-            control={
-              <Checkbox
-                name="atack"
-                checked={attack}
-                onChange={() => onChange({ name: "attack", value: !attack })}
-              />
-            }
-            label="Atack"
-          />
-        </Grid>
+        {hasAttack && (
+          <Grid item xs={12}>
+            <FormControlLabel
+              sx={{ minWidth: 165 }}
+              control={
+                <Checkbox
+                  name="atack"
+                  checked={attack}
+                  onChange={() => onChange({ name: "attack", value: !attack })}
+                />
+              }
+              label="Atack"
+            />
+          </Grid>
+        )}
         {attack && (
           <>
             <Grid item xs={6}>
@@ -89,8 +99,11 @@ const Edit = ({ action, state, onEdit, switchView, title }) => {
                   value={type}
                   onChange={(event) => onChange(event.target)}
                 >
-                  <MenuItem value="melee">Melee</MenuItem>
-                  <MenuItem value="range">Range</MenuItem>
+                  {atackType.map((item) => (
+                    <MenuItem key={item} value={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </Grid>
@@ -230,16 +243,6 @@ const Edit = ({ action, state, onEdit, switchView, title }) => {
                 ADD DAMAGE
               </Button>
             </Grid>
-
-            {/* <Grid item xs={6}>
-            <TextField
-              label="Target"
-              name="target"
-              value={target}
-              placeholder="one creature"
-              {...sharedInputProps}
-            />
-          </Grid> */}
           </>
         )}
         <Grid item xs={12}>

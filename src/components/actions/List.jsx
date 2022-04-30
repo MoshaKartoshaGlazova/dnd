@@ -4,7 +4,7 @@ import Edit from "./Edit";
 import View from "./View";
 import { toCamelCase, toCapitalCase } from "../../utils";
 
-const List = ({ state, onChange, title }) => {
+const List = ({ state, onChange, title, hasAttack, isLegendary }) => {
   const name = toCamelCase(title);
   const actions = state[name] ?? [];
   const onEdit = (newActionIndex) => (newAction) => {
@@ -54,7 +54,7 @@ const List = ({ state, onChange, title }) => {
         alignItems="flex-start"
         sx={{ marginTop: 2 }}
       >
-        {title === "LEGENDARY ACTIONs" && (
+        {isLegendary && (
           <TextField
             variant="outlined"
             size="small"
@@ -69,11 +69,12 @@ const List = ({ state, onChange, title }) => {
           if (action.edit)
             return (
               <Edit
-                title={name}
                 state={state}
                 action={action}
                 onEdit={onEdit(index)}
                 switchView={switchView(index)}
+                hasAttack={hasAttack}
+                isLegendary={isLegendary}
               />
             );
           else

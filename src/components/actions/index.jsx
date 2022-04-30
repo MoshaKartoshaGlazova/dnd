@@ -28,10 +28,16 @@ const Actions = ({ state, onChange }) => {
       </Grid>
       <Grid container sx={{ marginBottom: 1 }}>
         {actions.map(
-          ({ title, active }, index) =>
+          ({ title, active, hasAttack, isLegendary }, index) =>
             active && (
               <Grid item xs={6} sx={{ padding: 1 }} key={title}>
-                <List title={title} state={state} onChange={onChange} />
+                <List
+                  title={title}
+                  state={state}
+                  onChange={onChange}
+                  hasAttack={hasAttack}
+                  isLegendary={isLegendary}
+                />
               </Grid>
             )
         )}
