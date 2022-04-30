@@ -11,7 +11,10 @@ const CheckboxList = ({
 }) => {
   const onCheck = (item) => {
     if (!state[listName]) {
-      state[listName] = [item];
+      onChange({
+        name: listName,
+        value:[item],
+      });
     } else {
       if (state[listName].includes(item))
         onChange({
