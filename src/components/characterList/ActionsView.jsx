@@ -12,6 +12,7 @@ const ActionsView = ({ actions }) =>
       damages,
       description,
       cost,
+      bla,
     }) => (
       <Grid
         item
@@ -39,6 +40,16 @@ const ActionsView = ({ actions }) =>
                   Type:
                 </Typography>{" "}
                 {type}{" "}
+              </>
+            ) : (
+              ""
+            )}
+            {bla ? (
+              <>
+                <Typography component="span" fontStyle="oblique">
+                  Bla:
+                </Typography>{" "}
+                {bla}{" "}
               </>
             ) : (
               ""
@@ -91,10 +102,15 @@ const ActionsView = ({ actions }) =>
           </Typography>
         </Grid>
         <Grid item>
-          <Typography component="p" sx={{wordBreak:"break-word", paddingRight:1}}>{description}</Typography>
+          <Typography
+            component="p"
+            sx={{ wordBreak: "break-word", paddingRight: 1 }}
+          >
+            {description}
+          </Typography>
         </Grid>
       </Grid>
     )
-  )??<></>;
+  ) ?? <></>;
 
 export default ActionsView;

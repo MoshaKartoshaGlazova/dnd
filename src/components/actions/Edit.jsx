@@ -35,6 +35,7 @@ const Edit = ({
     description,
     attack,
     cost,
+    bla
   } = action;
   const onChange = ({ name, value }) => onEdit({ ...action, [name]: value });
   const sharedInputProps = {
@@ -99,11 +100,23 @@ const Edit = ({
                   value={type}
                   onChange={(event) => onChange(event.target)}
                 >
-                  {atackType.map((item) => (
-                    <MenuItem key={item} value={item}>
-                      {item}
-                    </MenuItem>
-                  ))}
+                <MenuItem value="melee">Melee</MenuItem>
+                <MenuItem value="range">Range</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+            
+            <Grid item xs={6}>
+              <FormControl fullWidth size="small">
+                <InputLabel id="bla-label">Bla</InputLabel>
+                <Select
+                  label="bla-label"
+                  name="bla"
+                  value={bla}
+                  onChange={(event) => onChange(event.target)}
+                >
+                <MenuItem value="spell">Spell</MenuItem>
+                <MenuItem value="weapone">Weapone</MenuItem>
                 </Select>
               </FormControl>
             </Grid>

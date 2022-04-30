@@ -13,6 +13,7 @@ const View = ({ action, switchView, onDelete }) => {
     damages,
     description,
     cost,
+    bla,
   } = action;
 
   const [showActionButtons, setShowActionButtons] = useState(false);
@@ -68,6 +69,16 @@ const View = ({ action, switchView, onDelete }) => {
           ) : (
             ""
           )}
+          {bla ? (
+            <>
+              <Typography component="span" fontStyle="oblique">
+                Bla:
+              </Typography>{" "}
+              {bla}{" "}
+            </>
+          ) : (
+            ""
+          )}
           {range ? (
             <>
               <Typography component="span" fontStyle="oblique">
@@ -116,7 +127,12 @@ const View = ({ action, switchView, onDelete }) => {
         </Typography>
       </Grid>
       <Grid item>
-        <Typography component="p" sx={{wordBreak:"break-word", paddingRight:1}} >{description}</Typography>
+        <Typography
+          component="p"
+          sx={{ wordBreak: "break-word", paddingRight: 1 }}
+        >
+          {description}
+        </Typography>
       </Grid>
     </Grid>
   );
