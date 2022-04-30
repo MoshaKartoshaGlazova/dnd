@@ -20,6 +20,7 @@ export const Main = () => {
       CHA: "10",
     },
     saves: [],
+    hover: false,
   });
 
   const handleChange = (event, newValue) => {

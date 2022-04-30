@@ -111,6 +111,7 @@ const CharacterPoints = ({ state }) => {
     }
     if ("fly" in state && state.fly != "") {
       speedString = speedString + ", fly " + state.fly + "ft.";
+      if (state.hover) speedString = speedString + "(hover)";
     }
     if ("swim" in state && state.swim != "") {
       speedString = speedString + ", swim " + state.swim + "ft.";
