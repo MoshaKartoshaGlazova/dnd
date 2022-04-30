@@ -4,6 +4,9 @@ import Typography from "@mui/material/Typography";
 import CharacterPoints from "./CharacterPoints";
 import CharacterCards from "./CharacterCards";
 import ThrowsAndSkills from "./ThrowsAndSkills";
+import ActionsView from "./ActionsView";
+import { actionButtonsInit } from "../../Constants";
+import { toCamelCase, toCapitalCase } from "../../utils";
 
 const CharacterView = ({ state }) => {
   console.log(state);
@@ -56,6 +59,28 @@ const CharacterView = ({ state }) => {
         <CharacterPoints state={state} />
         <CharacterCards state={state} />
         <ThrowsAndSkills state={state} />
+        {actionButtonsInit.map(({ title }) => (
+          <div key={title}>
+            {state[toCamelCase(title)] && (
+              <>
+                <Typography
+                  variant="h6"
+                  color="primary"
+                  fontWeight="bold"
+                  sx={{
+                    borderBottomStyle: "solid",
+                
+                    borderImage:
+                      "linear-gradient(90deg, #2B6383 45.82%, rgba(43, 99, 131, 0) 100%) 1",
+                  }}
+                >
+                  {toCapitalCase(title)}
+                </Typography>
+                <ActionsView actions={state[toCamelCase(title)]} />
+              </>
+            )}
+          </div>
+        ))}
       </Grid>
     </>
   );

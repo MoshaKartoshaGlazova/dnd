@@ -116,7 +116,7 @@ const View = ({ action, switchView, onDelete }) => {
         </Typography>
       </Grid>
       <Grid item>
-        <Typography>{description}</Typography>
+        <Typography component="p" sx={{wordBreak:"break-word", paddingRight:1}} >{description}</Typography>
       </Grid>
     </Grid>
   );
