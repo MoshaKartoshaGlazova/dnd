@@ -4,28 +4,22 @@ import { Typography } from "@mui/material";
 import { skills } from "../../Constants";
 
 const ThrowsAndSkills = ({ state }) => {
-  const getSortedSkills = () => {
-    if ("skills" in state) {
-      const sortSkills = Object.keys(state.skills)
+  let sortedSkills = !state.skills
+    ? undefined
+    : Object.keys(state.skills)
         .filter((key) => state.skills[key] !== "no")
         .sort()
         .reduce((res, key) => ((res[key] = state.skills[key]), res), {});
-      return sortSkills;
-    } else {
-      const sortSkills = {};
-      return sortSkills;
-    }
-  };
 
   const calculateModifier = (monster_char) => {
     return (
       monster_char +
       "+" +
       (Math.floor((state.states[monster_char] - 10) / 2) +
-      (state?.profBonus ?? 0))
+        (state?.profBonus ?? 0))
     );
   };
-
+  if (state.saves.length === 0 && !sortedSkills) return <></>;
   return (
     <Grid
       sx={{
@@ -38,23 +32,27 @@ const ThrowsAndSkills = ({ state }) => {
       container
       justifyContent="left"
     >
-      <Grid item xs={12}>
-        <Typography variant="regular">
-          <Typography variant="label">{"Saving Trows: "}</Typography>
-          {state.saves
-            .sort()
-            .map((item) => calculateModifier(item))
-            .join(", ")}
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <Typography variant="regular">
-          <Typography variant="label">{"Skills: "}</Typography>
-          {Object.keys(getSortedSkills())
-            .map((item) => InputSkill(item, state))
-            .join(", ")}
-        </Typography>
-      </Grid>
+      {state.saves.length > 0 && (
+        <Grid item xs={12}>
+          <Typography variant="regular">
+            <Typography variant="label">{"Saving Trows: "}</Typography>
+            {state.saves
+              .sort()
+              .map((item) => calculateModifier(item))
+              .join(", ")}
+          </Typography>
+        </Grid>
+      )}
+      {sortedSkills && (
+        <Grid item xs={12}>
+          <Typography variant="regular">
+            <Typography variant="label">{"Skills: "}</Typography>
+            {Object.keys(sortedSkills)
+              .map((item) => InputSkill(item, state))
+              .join(", ")}
+          </Typography>
+        </Grid>
+      )}
     </Grid>
   );
 };
