@@ -9,9 +9,11 @@ import {
   Select,
   TextField,
   Card,
+  IconButton,
 } from "@mui/material";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import React from "react";
-import { atackType, damageType, states } from "../../Constants";
+import { damageType, states } from "../../Constants";
 
 const Edit = ({
   action,
@@ -35,7 +37,7 @@ const Edit = ({
     description,
     attack,
     cost,
-    bla
+    bla,
   } = action;
   const onChange = ({ name, value }) => onEdit({ ...action, [name]: value });
   const sharedInputProps = {
@@ -51,6 +53,12 @@ const Edit = ({
           i !== index ? x : { ...x, [name]: value }
         ),
       });
+
+  const onDelete = (index) => () =>
+    onChange({
+      name: "damages",
+      value: damages.filter((x, i) => i !== index),
+    });
 
   return (
     <Card sx={{ padding: 1 }}>
@@ -100,12 +108,12 @@ const Edit = ({
                   value={type}
                   onChange={(event) => onChange(event.target)}
                 >
-                <MenuItem value="melee">Melee</MenuItem>
-                <MenuItem value="range">Range</MenuItem>
+                  <MenuItem value="melee">Melee</MenuItem>
+                  <MenuItem value="range">Range</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
-            
+
             <Grid item xs={6}>
               <FormControl fullWidth size="small">
                 <InputLabel id="bla-label">Bla</InputLabel>
@@ -115,8 +123,8 @@ const Edit = ({
                   value={bla}
                   onChange={(event) => onChange(event.target)}
                 >
-                <MenuItem value="spell">Spell</MenuItem>
-                <MenuItem value="weapone">Weapone</MenuItem>
+                  <MenuItem value="spell">Spell</MenuItem>
+                  <MenuItem value="weapone">Weapone</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -184,7 +192,16 @@ const Edit = ({
             </Grid>
             {damages &&
               damages.map((item, index) => (
-                <>
+                <Grid
+                  container
+                  item
+                  xs={12}
+                  direction="row"
+                  rowSpacing={2}
+                  columnSpacing={1}
+                  paddingBottom={1}
+                  allignItems="center"
+                >
                   <Grid item xs={6}>
                     <TextField
                       label="Damage"
@@ -195,8 +212,8 @@ const Edit = ({
                       onChange={onDamage(index)}
                     />
                   </Grid>
-                  <Grid item xs={6}>
-                    <FormControl size="small">
+                  <Grid item>
+                    <FormControl size="small" sx={{ minWidth: 150 }}>
                       <InputLabel id="characteristic-label">
                         + Characteristic
                       </InputLabel>
@@ -225,8 +242,8 @@ const Edit = ({
                       onChange={onDamage(index)}
                     />
                   </Grid>
-                  <Grid item xs={6}>
-                    <FormControl size="small">
+                  <Grid item>
+                    <FormControl size="small" sx={{ minWidth: 100 }}>
                       <InputLabel id="type-label">Type</InputLabel>
                       <Select
                         label="type-label"
@@ -242,7 +259,12 @@ const Edit = ({
                       </Select>
                     </FormControl>
                   </Grid>
-                </>
+                  <Grid item sx={{alignSelf:"center"}}>
+                    <IconButton size="small" onClick={onDelete(index)}>
+                      <DeleteOutlineIcon />
+                    </IconButton>
+                  </Grid>
+                </Grid>
               ))}
             <Grid item xs={12}>
               <Button
