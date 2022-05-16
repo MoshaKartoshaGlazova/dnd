@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import ManualEdit from "../components/ManualEdit";
 import CharacterView from "../components/characterList/CharacterView";
 import { Box, Tab, Tabs } from "@mui/material";
+import Compendium from "../components/compendium";
 
 export const Main = () => {
   const [value, setValue] = React.useState(0);
@@ -61,6 +62,7 @@ export const Main = () => {
 
         <Box>
           {value === 0 && <ManualEdit state={state} setState={setState} />}
+          {value === 1 && <Compendium state={state} setState={setState} />}
         </Box>
       </Grid>
 
