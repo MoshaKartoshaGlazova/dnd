@@ -1,5 +1,6 @@
 import express from "express";
 import fs from "fs";
+import cors  from 'cors';
 import { createServer } from "http";
 import { Server } from "socket.io";
 
@@ -15,6 +16,7 @@ const io = new Server(myServer, {
     credentials: false,
   },
 });
+app.use(cors({origin:corsOrigin}))
 
 app.get("/", (_, res) => res.send(`Server is up and running`));
 
@@ -26,7 +28,7 @@ const jsonfile = {
 };
 
 app.get("/compendium", (req, res) => {
-  const name = req.params.name;
+  const name = req.query.name;
   res.send(data.compendium.filter((x) => x.name.includes(name)));
 });
 

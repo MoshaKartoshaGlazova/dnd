@@ -4,11 +4,24 @@ import View from "./View";
 const SearchList = ({ search, state, setState }) => {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/compendium?name="+search,{mode:"no-cors"}).then((result)=>{
-        console.log(result.json());
-         setData(result.json());
-        });
-  }, [search, data]);
+    fetch("http://localhost:4000/compendium?name=" + search, {
+      mode: "cors",
+      method: "GET",
+      dataType: "json",
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log(response);
+          return response.json();
+        }
+        throw response;
+      })
+      .then((result) => {
+        console.log(result);
+        setData(result);
+      })
+      .catch(console.error);
+  }, [search]);
   const onAdd = (action) => () => {
     const { type } = action;
     const actions = state[type] ?? [];
