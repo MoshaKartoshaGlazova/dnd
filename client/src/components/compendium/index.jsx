@@ -1,11 +1,11 @@
-import { TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 import React, { useState } from "react";
 import SearchList from "./SearchList";
 
 const Compendium = ({ state, setState }) => {
   const [search, setSearch] = useState();
   return (
-    <>
+    <Box padding={1}>
       <TextField
         fullWidth
         label="Search"
@@ -17,7 +17,7 @@ const Compendium = ({ state, setState }) => {
       {search && (
         <SearchList state={state} search={search} setState={setState} />
       )}
-    </>
+    </Box>
   );
 };
 

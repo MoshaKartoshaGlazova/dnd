@@ -71,7 +71,7 @@ export const Main = () => {
         xs={5}
         sx={{ marginLeft: 4, marginTop: 2, backgroundColor: "#FFFFFF" }}
       >
-        <Box>{value === 0 && <CharacterView state={state} />}</Box>
+        <Box> <CharacterView state={state} /></Box>
       </Grid>
     </Grid>
   );

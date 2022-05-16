@@ -25,6 +25,7 @@ const View = ({ action, alreadyExist, addItem, onDelete }) => {
       direction="column"
       justifyContent="flex-start"
       marginTop={2}
+      padding={1}
       onMouseEnter={() => setShowActionButtons(true)}
       onMouseLeave={() => setShowActionButtons(false)}
       sx={{
@@ -41,16 +42,20 @@ const View = ({ action, alreadyExist, addItem, onDelete }) => {
         direction="row"
         justifyContent="space-between"
       >
-        <Grid margin="auto 0" item>
+        {alreadyExist && (
+          <Grid item margin="auto 0">
+            <DoneIcon fontSize="small" color="primary" />
+          </Grid>
+        )}
+        <Grid item margin="auto 0" flexGrow={5}>
           <Typography padding="5px 0" fontWeight="bold">
-            {alreadyExist && <DoneIcon />}
             {name}
             {cost && ` ${cost} Action(s)`}
           </Typography>
         </Grid>
         {showActionButtons && (
           <Grid item>
-            {alreadyExist ? (
+            {!alreadyExist ? (
               <IconButton size="small" onClick={addItem}>
                 <AddIcon />
               </IconButton>
