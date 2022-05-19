@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { replacer } from "../../utils";
 import View from "./View";
 
 const SearchList = ({ search, state, setState }) => {
@@ -35,10 +36,11 @@ const SearchList = ({ search, state, setState }) => {
       [type]: actions.filter(({ id }) => id !== action.id),
     });
   };
+  const transformDescription = replacer(state);
   return data.map((action) => (
     <View
       key={action.Id}
-      action={action}
+      action={{...action, description: transformDescription(action.description)}}
       addItem={onAdd(action)}
       onDelete={onDelete(action)}
       alreadyExist={state[action.type]?.includes(action) ?? false}

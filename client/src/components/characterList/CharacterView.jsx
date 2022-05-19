@@ -6,24 +6,25 @@ import CharacterCards from "./CharacterCards";
 import ThrowsAndSkills from "./ThrowsAndSkills";
 import ActionsView from "./ActionsView";
 import { actionButtonsInit } from "../../Constants";
-import { toCamelCase, toCapitalCase } from "../../utils";
+import { replacer, toCamelCase, toCapitalCase } from "../../utils";
 
 const CharacterView = ({ state }) => {
   console.log(state);
   const CheckAligment = () => {
-    if (state.alignment !== false) {
-      if (
-        state.alignment_view === "neutral" &&
-        state.alignment_behavior === "neutral"
-      ) {
-        return "true neutral";
-      } else {
-        return state.alignment_behavior + " " + state.alignment_view;
-      }
-    } else {
+    if (state.alignment === false) {
       return "unaligned";
     }
+    if (
+      state.alignment_view === "neutral" &&
+      state.alignment_behavior === "neutral"
+    ) {
+      return "true neutral";
+    } else {
+      return state.alignment_behavior + " " + state.alignment_view;
+    }
   };
+
+  const cleanUpDescription = replacer(state);
 
   return (
     <>
@@ -69,14 +70,19 @@ const CharacterView = ({ state }) => {
                   fontWeight="bold"
                   sx={{
                     borderBottomStyle: "solid",
-                
+
                     borderImage:
                       "linear-gradient(90deg, #2B6383 45.82%, rgba(43, 99, 131, 0) 100%) 1",
                   }}
                 >
                   {toCapitalCase(title)}
                 </Typography>
-                <ActionsView actions={state[toCamelCase(title)]} />
+                <ActionsView
+                  actions={state[toCamelCase(title)].map((action) => ({
+                    ...action,
+                    description: cleanUpDescription(action.description),
+                  }))}
+                />
               </>
             )}
           </div>

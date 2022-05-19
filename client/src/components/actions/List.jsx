@@ -2,7 +2,7 @@ import { Button, Grid, TextField, Typography } from "@mui/material";
 import React from "react";
 import Edit from "./Edit";
 import View from "./View";
-import { toCamelCase, toCapitalCase } from "../../utils";
+import { replacer, toCamelCase, toCapitalCase } from "../../utils";
 
 const List = ({ state, onChange, title, hasAttack, isLegendary }) => {
   const name = toCamelCase(title);
@@ -24,6 +24,7 @@ const List = ({ state, onChange, title, hasAttack, isLegendary }) => {
     const value = actions.filter((action, index) => index !== newActionIndex);
     onChange({ name, value });
   };
+  const transformDescription = replacer(state);
   return (
     <>
       <Grid
@@ -80,7 +81,7 @@ const List = ({ state, onChange, title, hasAttack, isLegendary }) => {
           else
             return (
               <View
-                action={action}
+                action={{...action, description: transformDescription(action.description)}}
                 onDelete={onDelete(index)}
                 switchView={switchView(index)}
               />

@@ -17,3 +17,14 @@ export const toCapitalCase = (string) =>
         : latter.toLowerCase()
     )
     .join("");
+
+export const replacer = (state) => {
+  const values = {
+    "[]": state.name??"<Name>",
+  };
+  return (content) =>
+    Object.keys(values).reduce(
+      (result, key) => result.replace(key, values[key]),
+      content
+    );
+};
