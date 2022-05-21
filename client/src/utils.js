@@ -20,7 +20,7 @@ export const toCapitalCase = (string) =>
 
 export const replacer = (state) => {
   const values = {
-    "[]": state.name??"<Name>",
+    "[]": state?.name??"<Name>",
   };
   return (content='') =>
     Object.keys(values).reduce(
