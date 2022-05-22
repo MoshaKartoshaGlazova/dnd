@@ -7,14 +7,14 @@ import DoneIcon from "@mui/icons-material/Done";
 const View = ({ action, alreadyExist, addItem, onDelete }) => {
   const {
     name,
-    type,
     range,
     magicBonus,
     criticalRange,
     damages,
     description,
     cost,
-    bla,
+    type1,
+    type2
   } = action;
 
   const [showActionButtons, setShowActionButtons] = useState(false);
@@ -69,22 +69,22 @@ const View = ({ action, alreadyExist, addItem, onDelete }) => {
       </Grid>
       <Grid item>
         <Typography>
-          {type ? (
+          {type1 ? (
             <>
               <Typography component="span" fontStyle="oblique">
                 Type:
               </Typography>{" "}
-              {type}{" "}
+              {type1}{" "}
             </>
           ) : (
             ""
           )}
-          {bla ? (
+          {type2 ? (
             <>
               <Typography component="span" fontStyle="oblique">
                 Bla:
               </Typography>{" "}
-              {bla}{" "}
+              {type2}{" "}
             </>
           ) : (
             ""

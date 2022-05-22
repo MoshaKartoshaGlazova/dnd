@@ -6,7 +6,8 @@ import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 const View = ({ action, switchView, onDelete }) => {
   const {
     name,
-    type,
+    type1,
+    type2,
     range,
     magicBonus,
     criticalRange,
@@ -59,22 +60,22 @@ const View = ({ action, switchView, onDelete }) => {
       </Grid>
       <Grid item>
         <Typography>
-          {type ? (
+          {type1 ? (
             <>
               <Typography component="span" fontStyle="oblique">
                 Type:
               </Typography>{" "}
-              {type}{" "}
+              {type1}{" "}
             </>
           ) : (
             ""
           )}
-          {bla ? (
+          {type2 ? (
             <>
               <Typography component="span" fontStyle="oblique">
                 Bla:
               </Typography>{" "}
-              {bla}{" "}
+              {type2}{" "}
             </>
           ) : (
             ""

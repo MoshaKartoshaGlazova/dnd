@@ -12,7 +12,8 @@ const ActionsView = ({ actions }) =>
       damages,
       description,
       cost,
-      bla,
+      type1,
+      type2,
     }) => (
       <Grid
         item
@@ -34,22 +35,12 @@ const ActionsView = ({ actions }) =>
         </Grid>
         <Grid item>
           <Typography>
-            {type ? (
+            {type1 || type2 ? (
               <>
                 <Typography component="span" fontStyle="oblique">
                   Type:
                 </Typography>{" "}
-                {type}{" "}
-              </>
-            ) : (
-              ""
-            )}
-            {bla ? (
-              <>
-                <Typography component="span" fontStyle="oblique">
-                  Bla:
-                </Typography>{" "}
-                {bla}{" "}
+                {type1} {type2}{" "}
               </>
             ) : (
               ""

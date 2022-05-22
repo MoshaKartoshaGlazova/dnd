@@ -104,7 +104,7 @@ const Edit = ({
                 <InputLabel id="type-label">Type</InputLabel>
                 <Select
                   label="type-label"
-                  name="type"
+                  name="type1"
                   value={type}
                   onChange={(event) => onChange(event.target)}
                 >
@@ -119,7 +119,7 @@ const Edit = ({
                 <InputLabel id="bla-label">Bla</InputLabel>
                 <Select
                   label="bla-label"
-                  name="bla"
+                  name="type2"
                   value={bla}
                   onChange={(event) => onChange(event.target)}
                 >
