@@ -31,47 +31,53 @@ export const Main = () => {
   return (
     <Grid
       container
-      spacing={2}
+      alignContent="flex-start"
       sx={{
         backgroundColor: "#AAAAAA",
+        minHeight: "calc(100vh)",
+        marginTop: 0,
       }}
     >
       <Grid
         item
         sx={{
-          width: "100%",
           height: 100,
           backgroundColor: "#AEBBC8",
         }}
+        xs={12}
       ></Grid>
-
       <Grid
         item
-        xs={6}
-        sx={{ marginLeft: 4, marginTop: 2, backgroundColor: "#F3F9FF" }}
+        xs={12}
+        container
+        marginTop={2}
+        spacing={2}
+        justifyContent="space-around"
+        alignItems="flex-start"
       >
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="scrollable"
-          scrollButtons="auto"
-        >
-          <Tab label="Generate" />
-          <Tab label="Compendium" />
-        </Tabs>
+        <Grid item xs={6} sx={{ backgroundColor: "#F3F9FF" }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            variant="scrollable"
+            scrollButtons="auto"
+          >
+            <Tab label="Generate" />
+            <Tab label="Compendium" />
+          </Tabs>
 
-        <Box>
-          {value === 0 && <ManualEdit state={state} setState={setState} />}
-          {value === 1 && <Compendium state={state} setState={setState} />}
-        </Box>
-      </Grid>
+          <Box>
+            {value === 0 && <ManualEdit state={state} setState={setState} />}
+            {value === 1 && <Compendium state={state} setState={setState} />}
+          </Box>
+        </Grid>
 
-      <Grid
-        item
-        xs={5}
-        sx={{ marginLeft: 4, marginTop: 2, backgroundColor: "#FFFFFF" }}
-      >
-        <Box> <CharacterView state={state} /></Box>
+        <Grid item xs={5} sx={{ backgroundColor: "#FFFFFF" }}>
+          <Box>
+            {" "}
+            <CharacterView state={state} />
+          </Box>
+        </Grid>
       </Grid>
     </Grid>
   );
