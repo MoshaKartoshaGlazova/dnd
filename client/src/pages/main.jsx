@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import Grid from "@mui/material/Grid";
 import ManualEdit from "../components/ManualEdit";
 import CharacterView from "../components/characterList/CharacterView";
-import { Box, Tab, Tabs } from "@mui/material";
+import { Box, Button, Tab, Tabs } from "@mui/material";
 import Compendium from "../components/compendium";
+import html2canvas from "html2canvas";
 
 export const Main = () => {
   const [value, setValue] = React.useState(0);
@@ -28,6 +29,22 @@ export const Main = () => {
     setValue(newValue);
   };
 
+  const onSave = () => {
+    html2canvas(document.querySelector("#png")).then((canvas) => {
+      const image = canvas.toDataURL("image/png", 1.0);
+      const fakeLink = window.document.createElement("a");
+      fakeLink.style = "display:none;";
+      fakeLink.download = state?.name ?? "Name";
+
+      fakeLink.href = image;
+
+      document.body.appendChild(fakeLink);
+      fakeLink.click();
+      document.body.removeChild(fakeLink);
+
+      fakeLink.remove();
+    });
+  };
   return (
     <Grid
       container
@@ -73,10 +90,11 @@ export const Main = () => {
         </Grid>
 
         <Grid item xs={5} sx={{ backgroundColor: "#FFFFFF" }}>
-          <Box>
+          <Box id="png">
             {" "}
             <CharacterView state={state} />
           </Box>
+          <Button onClick={onSave}>Save</Button>
         </Grid>
       </Grid>
     </Grid>
