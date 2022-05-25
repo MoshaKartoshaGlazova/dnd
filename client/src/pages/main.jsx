@@ -89,12 +89,15 @@ export const Main = () => {
           </Box>
         </Grid>
 
-        <Grid item xs={5} sx={{ backgroundColor: "#FFFFFF" }}>
+        <Grid item xs={5} sx={{ backgroundColor: "#FFFFFF" }} alignContent="center">
           <Box id="png">
             {" "}
             <CharacterView state={state} />
           </Box>
-          <Button onClick={onSave}>Save</Button>
+          <Box margin="auto" width="fit-content">
+          <Button onClick={onSave}>Save as PNG</Button>
+
+          </Box>
         </Grid>
       </Grid>
     </Grid>
